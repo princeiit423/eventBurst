@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Student Innovation Center</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        *{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    
+
+}
+html,body{
+    height: 100%;
+    width: 100%;
+}
+body::-webkit-scrollbar {
+    display: block;
+    width: 8px;
+    background: white;
+  }
+  body::-webkit-scrollbar-thumb {
+    background-color:greenyellow;
+  
+    border-radius: 50px;
+  }
+
+
+#nav {
+    height: 130px;
+    width: 100%;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    padding: 0 120px;
+    gap: 50px;
+    position: fixed;
+    justify-content: flex-start;
+    z-index: 999;
+    color: white;
+  }
+  #nav img {
+    height: 4.5vw;
+  }
+  #nav a{
+    text-decoration: none;
+    color: white;
+  }
+  #nav h4 {
+    text-transform: uppercase;
+    font-weight: 500;
+    cursor: pointer;
+    font-size: 1.15vw;
+  }
+  .link{
+    display: flex;
+    gap: 26px;
+    padding-left: 15%;
+  }
+  .link a{
+    text-align: center;
+  }
+
+
+  
+.page1{
+    background-color: white;
+    background-image: url(src/king.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+
+    height: 140%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    
+}
+.cursor{
+    height: 20px;
+    width: 20px;
+    background-color: greenyellow;
+    border-radius: 50px;
+    position: fixed;
+    z-index: 1;
+}
+
+.page1 .title h1{
+    margin-top: 3%;
+    font-size: 10rem;
+color:white;
+    /* background-image: url(tron.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-clip: text; */
+    
+    
+}
+.page1 .title{
+    position: absolute;
+    top:12%;
+}
+
+
+.page2{
+    background-color: black;
+    height: 120%;
+    width: 100%;
+}
+.page2 .description{
+    color: white;
+    padding-left: 50px;
+    text-align: left;
+    margin-right: 20%;
+    
+}
+.page2 .description b{
+    color: green;
+    margin-top:80px ;
+
+}
+.page2 .description p{
+    font-size: 3.5rem;
+
+}
+
+.page2 .description button{
+    height: 3rem;
+    width: 17rem;
+    background-color:#a3d421;
+    border-radius: 30px;
+    margin-top: 50px;
+    border-color: transparent;
+    cursor: pointer;
+}
+
+
+.page3{
+    background-color: black;
+    height: 350%;
+    width: 100%;
+    color: white;
+
+}
+
+.page3 .featured h1{
+    font-size: 15rem;
+    text-wrap: wrap;
+    text-align: center;
+    line-height: 13rem;
+}
+.page3 .jar{
+    display: flex;
+    justify-content:space-around;
+    margin-top: 10rem;
+}
+.page3 .jar .box1{
+    height: 45rem;
+    width: 32rem;
+    background-image: url(src/featured1.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 3rem;  
+}
+.page3 .jar .box2{
+    height: 45rem;
+    width: 32rem;
+    background-image: url(src/featured2.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 3rem;
+}
+
+.page3 .jar .box3{
+  height: 45rem;
+  width: 32rem;
+  background-image: url(src/featured1.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 3rem;  
+}
+.page3 .jar .box4{
+  height: 45rem;
+  width: 32rem;
+  background-image: url(src/featured2.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 3rem;
+}
+
+
+.page3 .txt-jar {
+    display: flex;
+    justify-content: space-around;
+}
+
+.page3 .txt-jar h3{
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.page3 .txt-jar h3 span{
+    color: grey;
+    font-size: 1.2rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.page3 .past {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3rem;
+}
+.page3 .past a{
+    margin-right: 260px;
+}
+.page3 .past button{
+    width: 20rem;
+    height: 3rem;
+    border-radius: 30px;
+    font-weight: 600;
+    position: relative;
+    left: 60%;
+}
+
+.page4{
+    background-color: black;
+    height: 160%;
+    width: 100%;
+}
+.page4 .container{
+    position: relative;
+    top: 20%;
+    display: flex;
+    justify-content: space-between;
+}
+.page4 .container .info{
+    font-size: 8rem;
+    color: white;
+    width: 50%;
+    padding: 20px;
+}
+.page4 .container img{
+    background-color:pink;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 35%;
+    height: 50%;
+    margin-right: 50px;
+    border-radius: 40px;
+    
+}
+.page4 button{
+    position: relative;
+    top: 21%;
+    left: 73%;
+    width: 150px;
+    height: 30px;
+    border-radius: 30px;
+    border-color: transparent;
+    cursor: pointer;
+}
+.page5{
+    height: 240%;
+    width: 100%;
+    border-top-left-radius: 160px 160px;
+    border-top-right-radius: 160px 160px;
+    
+}
+.page5 h1{
+    position: relative;
+    left: 25%;
+    top: 5%;
+    font-size: 10rem;
+    text-wrap: wrap;
+    width: 50%;
+    text-align: center;
+}
+.page5 h2{
+    font-size: 5rem;
+    margin-top: 20px;
+    text-align: left;
+    align-items: center;
+    padding: 20px 0px 5px 160px;
+}
+.page5 .content{
+    margin-top: 80px;
+    position: relative;
+}
+.page5 .content hr{
+    color: black;
+    width: 80%;
+    margin-left: 11%;
+    margin-top: 100px;
+    stroke: black;
+    font-weight: bolder;
+}
+.page5 .content a{
+    text-decoration: none;
+    color: black;
+}
+a button{
+    position: relative;
+    width: 15%;
+    height: 2%;
+    left: 40%;
+    margin-top: 3%;
+    border-radius: 20px;
+    border-color: transparent;
+    background-color: greenyellow;
+    cursor: pointer;
+}
+.page6{
+    height: 130%;
+    width: 100%;
+    
+}
+.page6 .title p{
+    font-size: 15rem;
+    text-align: center;
+    margin-top: 1%;
+}
+
+.scroller {
+    max-width: 100%;
+    height: 38%;
+    margin-top: 3%;
+  }
+  
+  .scroller__inner {
+    padding-block: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .scroller[data-animated="true"] {
+    overflow: hidden;
+    -webkit-mask: linear-gradient(
+      90deg,
+      transparent,
+      white 20%,
+      white 80%,
+      transparent
+    );
+    mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+  }
+  
+  .scroller[data-animated="true"] .scroller__inner {
+    width: max-content;
+    flex-wrap: nowrap;
+    animation: scroll var(--_animation-duration, 40s)
+      var(--_animation-direction, forwards) linear infinite;
+  }
+  
+  .scroller[data-direction="right"] {
+    --_animation-direction: reverse;
+  }
+  
+  .scroller[data-direction="left"] {
+    --_animation-direction: forwards;
+  }
+  
+  .scroller[data-speed="fast"] {
+    --_animation-duration: 20s;
+  }
+  
+  .scroller[data-speed="slow"] {
+    --_animation-duration: 60s;
+  }
+  
+  @keyframes scroll {
+    to {
+      transform: translate(calc(-50% - 0.5rem));
+    }
+  }
+  
+  /* general styles */
+  
+  :root {
+    --clr-neutral-100: hsl(0, 0%, 100%);
+    --clr-primary-100: hsl(205, 15%, 58%);
+    --clr-primary-400: hsl(215, 25%, 27%);
+    --clr-primary-800: hsl(217, 33%, 17%);
+    --clr-primary-900: hsl(218, 33%, 9%);
+  }
+  .scroller .scroller__inner img{
+        border-radius: 7px;
+        width: 400px;
+        height: 300px; 
+        background-size: cover;
+        background-repeat: no-repeat;  
+  }
+  .page6 a button{
+    position: relative;
+    width: 15%;
+    height: 4%;
+    left: 40%;
+    margin-top: 3%;
+    border-radius: 20px;
+    border-color: transparent;
+    background-color: greenyellow;
+    cursor: pointer;
+}
+
+.page7{
+  width: 100%;
+  height: 175%;
+  background-color: #000;
+}
+.page7 .container{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 5%;
+}
+.page7 h1{
+  text-align: center;
+  font-size: 10rem;
+  color: white;
+}
+.page7 .card{
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  height: 300px;
+  width: 250px;
+  margin-left: 30px;
+  margin-right: 30px;
+  margin-top: 60px;
+  border-radius: 10px;
+}
+.page7 .card img{
+  width: 250px;
+  height: 200px ;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.page7 .card .text{
+  color: black;
+  width: 250px;
+  height: 100px;
+  background-color: #F3F8FF;
+  padding: 3px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.page7 .card .text p,i{
+  padding: 10px;
+}
+.page7 .card .text p{
+  font-size: 1.2rem;
+}
+
+.page7 .card:hover{
+  border: 2px solid greenyellow;
+  
+}
+.page7 button {
+  height: 3%;
+  width: 10%;
+  position: relative;
+  left: 43%;
+  border-radius: 30px;
+  background-color: greenyellow;
+  border: transparent;
+  cursor: pointer;
+
+}
+
+.page8{
+  height: 50%;
+  width: 100%;
+  background-color: black;
+  color: white;
+  overflow-x:hidden;
+  text-wrap: nowrap;
+}
+.page8 h1{
+  font-size: 9rem;
+  text-align: center;
+  position: relative;
+  top: 25%;
+}
+
+
+#cool {
+  --color: #560bad;
+  font-family: inherit;
+  display: inline-block;
+  width: 10em;
+  height: 2.6em;
+  line-height: 2.5em;
+  margin: 20px;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  border: 2px solid var(--color);
+  transition: color 0.5s;
+  z-index: 1;
+  font-size: 17px;
+  border-radius: 6px;
+  font-weight: 500;
+  color: var(--color);
+  border: transparent;
+  border-radius: 20px;
+}
+
+#cool:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  background: var(--color);
+  height: 150px;
+  width: 250px;
+  border-radius: 50%;
+}
+
+#cool:hover {
+  color: #fff;
+}
+
+#cool:before {
+  top: 100%;
+  left: 100%;
+  transition: all 0.7s;
+}
+
+#cool:hover:before {
+  top: -30px;
+  left: -30px;
+}
+
+#cool:active:before {
+  background: #3a0ca3;
+  transition: background 0s;
+}
+
+
+
+
+#footer {
+    height: 40vh;
+    width: 100%;
+    background: linear-gradient(to left bottom, #119f3a 0%, #a3d421 80%);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 6.5vw;
+    padding: 0 100px;
+    
+  }
+  #footer > img {
+    position: absolute;
+    left: 0;
+    height: 100%;
+    z-index: 0;
+  }
+  #f1 img {
+    height: 100px;
+  }
+  #f1,
+  #f2,
+  #f3,
+  #f4 {
+    width: fit-content;
+    position: relative;
+    z-index: 99;
+    /* background-color: red; */
+  }
+  #f2 h3 {
+    font-size: 1.6vw;
+    white-space: nowrap;
+    text-transform: uppercase;
+    color: #000;
+    font-weight: 900;
+    margin-bottom: 8px;
+  }
+  
+  #f3 h3 {
+    font-size: 1.6vw;
+    white-space: nowrap;
+    text-transform: uppercase;
+    color: #000;
+    font-weight: 800;
+    margin-bottom: 8px;
+  }
+  #f4 h4 {
+    font-size: 1vw;
+    white-space: nowrap;
+    text-transform: uppercase;
+    color: #000;
+    font-weight: 600;
+    line-height: 20px;
+    margin-bottom: 8px;
+  }
+  .scroller__inner img:hover{
+    transform: scale(1.15);
+    transition-delay: 0.2s;
+    border-radius: 17px;
+  }
+  .page4 .container img:hover{
+    transform: scale(1.05);
+    transition-duration:1s;
+  }
+
+
+    </style>
+  </head>
+  <body>
+    <div id="nav">
+      <img src="btch.jpg" alt="" />
+      <a href="/">HOME</a>
+      <a href="/pastEvent">PAST EVENT</a>
+      <a href="/upcomingevent">UPCOMING EVENT</a>
+      <a href="/profile">PROFILE</a>
+      <a href="/admin">ADMIN</a>
+      <a href="/contact">CONTACTS</a>
+      <div class="link">
+        <% if(!currUser){ %>
+        <a href="/signup">SIGNUP</a>
+        <a href="/login">LOGIN</a>
+        <% } else {%>
+        <a href="/logout">LOGOUT</a>
+        <% } %>
+      </div>
+    </div>
+
+    <div class="cursor">
+      <div class="cursor-blur"></div>
+    </div>
+    <div class="page1">
+      <div class="title">
+        <h1>Welcome to</h1>
+        <h1>Student</h1>
+        <h1>Innovation</h1>
+        <h1>Center</h1>
+      </div>
+    </div>
+    <div class="page2">
+      <div class="description">
+        <p>
+          <span style="color: lawngreen;
+    font-size: 2rem;">What we do? </span><br />The Student Innovation Centre is a
+          dynamic hub where creativity meets technology. We provide students
+          with access to a wide range of <span style="color: lawngreen;">electronic components</span>, empowering them
+          to turn ideas into reality. Through hands-on workshops, technical
+          events, and collaborative projects, we foster innovation, <span style="color: lawngreen;">skill
+          development</span>, and a passion for engineering.
+        </p>
+        <a style="position: relative;
+    left: -42%;" href="https://www.facebook.com/groups/1450438815241431"><button id="cool">see Details</button></a>
+      </div>
+    </div>
+    <div class="page3">
+      <div class="featured"><h1>Featured Events</h1></div>
+      <div class="jar">
+        <div class="box1"></div>
+        <div class="box2"></div>
+      </div>
+      <div class="txt-jar">
+        <h3>
+          Electronic Innovation 8.0 <br />
+          <span>Awesome Event for ECE </span>
+        </h3>
+        <h3>
+          Electronic Workshop <br />
+          <span>Awesome workshop for ECE </span>
+        </h3>
+      </div>
+
+      <div class="jar">
+        <div class="box3"></div>
+        <div class="box4"></div>
+      </div>
+      <div class="txt-jar">
+        <h3>
+          Electronic Innovation 8.0 <br />
+          <span>Awesome Event for ECE </span>
+        </h3>
+        <h3>
+          Electronic Workshop <br />
+          <span>Awesome workshop for ECE </span>
+        </h3>
+      </div>
+
+      <br />
+      <div class="past"><a href="/pastEvent"><button id="cool">View Past Events</button> </a></div>
+
+      <div class="thread-effect"></div>
+    </div>
+
+    <% for(e of winners){ %>
+    <div class="page4">
+      <div class="container">
+        <div class="info">
+          <p>Winner OF</p>
+          <p>ECEian OF The Week</p>
+        </div>
+        <img src="<%=e.imageUrl%>" alt="img" />
+      </div>
+      <a href="/winner"><button id="cool">See More</button></a>
+    </div>
+  <% } %>
+    <div class="page5">
+      <h1>WHERE WE THRIVE</h1>
+
+      <div class="content">
+        <hr />
+        <a href="#">
+          <h2>Frequently Organising Workshop.</h2>
+        </a>
+        <hr />
+        <a href="#">
+          <h2>Providing Expensive Components.</h2>
+        </a>
+        <hr />
+        <a href="#">
+          <h2>Held Election for Designation.</h2>
+        </a>
+        <hr />
+        <a href="#">
+          <h2>Organising Awesome Events.</h2>
+        </a>
+      </div>
+      <a href="/upcomingevent"><button id="cool">Explore</button> </a>
+    </div>
+
+    <div class="page6">
+      <div class="title">
+        <p>Archive</p>
+      </div>
+      <div class="scroller" data-direction="right" data-speed="slow">
+        <div class="scroller__inner">
+          <img src="src/a1.jpg" alt="" />
+          <img src="src/a2.jpg" alt="" />
+          <img src="src/a3.jpg" alt="" />
+          <img src="src/a4.jpg" alt="" />
+          <img src="src/a5.jpg" alt="" />
+          <img src="src/a6.jpg" alt="" />
+          <img src="src/a7.jpg" alt="" />
+          <img src="src/a8.jpg" alt="" />
+          <img src="https://i.postimg.cc/VNVW9gtH/Whats-App-Image-2024-08-18-at-21-04-35-3f1ed572.jpg" alt="" />
+          <img src="https://i.postimg.cc/6Q3hGg8v/Whats-App-Image-2024-08-18-at-21-05-26-6d51c059.jpg" alt="" />
+          <img src="https://i.postimg.cc/13yByfPM/Whats-App-Image-2024-08-18-at-21-14-15-88af42a9.jpg" alt="" />
+          <img src="https://i.postimg.cc/zGpjv8GN/Whats-App-Image-2024-08-18-at-21-14-15-e0e33921.jpg" alt="" />
+          <img src="https://i.postimg.cc/GhFz0k0H/Whats-App-Image-2024-08-18-at-21-14-16-9534468b.jpg" alt="" />
+          <img src="https://i.postimg.cc/fW0BKGB7/Whats-App-Image-2024-08-18-at-21-14-16-cd48326e.jpg" alt="" />
+          <img src="https://i.postimg.cc/ZKtjDwMG/Whats-App-Image-2024-08-18-at-21-14-16-f47ba3da.jpg" alt="" />
+          <img src="https://i.postimg.cc/KjLf8TRp/Whats-App-Image-2024-08-18-at-21-14-17-e981a1c3.jpg" alt="" />
+          <img src="https://i.postimg.cc/N0JpJY3D/Whats-App-Image-2024-08-18-at-21-14-17-f55b1478.jpg" alt="" />
+          <img src="https://i.postimg.cc/yd2nKjYS/Whats-App-Image-2024-08-18-at-21-14-18-154c1038.jpg" alt="" />
+        </div>
+      </div>
+      <a href="/pastEvent"><button id="cool">Explore</button> </a>
+      <br />
+
+      
+    </div>
+
+    <div class="page7">
+      <h1>Components</h1>
+      <h1>We Have </h1>
+      <div class="container"> 
+      <div class="card">
+        <img src="https://img-c.udemycdn.com/course/750x422/982708_2483_2.jpg" alt="">
+        <div class="text">
+          <p><b> Arduino</b> </p>
+          <i>Status: <span style="color:green;">Available </span></i>
+        </div>
+         </div>
+
+         <div class="card">
+          <img src="https://imgs.search.brave.com/hlirWju86dQHiaGv7y-JJK61HhGQBwfUVec8ptAGYI8/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NzFSS1RvYXhtbkwu/anBn" alt="">
+          <div class="text">
+            <p><b> Drone Motor * 4</b> </p>
+            <i>Status: <span style="color:green;">Available </span></i>
+          </div>
+           </div>
+
+           <div class="card">
+            <img src="https://imgs.search.brave.com/ngObqHbVdzh5KKS0zzV3qmylVPLjT7lypLOXz3WpgPA/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9zLmFs/aWNkbi5jb20vQHNj/MDQva2YvSDM1YWQz/OTRmNTAxZTQwNTg5/MGE3ODI4OTVjZjY1/MzJjSC5qcGdfMzAw/eDMwMC5qcGc" alt="">
+            <div class="text">
+              <p><b> GPS Module * 4</b> </p>
+              <i>Status: <span style="color:green;">Available </span></i>
+            </div>
+             </div>
+
+             <div class="card">
+              <img src="https://imgs.search.brave.com/9JNw2VE6mmkAmKSlPGePVm4qJKQUBiWX5tFWK723IyM/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NzFEdG94dW9KTUwu/anBn" alt="">
+              <div class="text">
+                <p><b> Drone Kit Set * 1</b> </p>
+                <i>Status: <span style="color:green;">Available </span></i>
+              </div>
+               </div>
+
+               <div class="card">
+                <img src="https://imgs.search.brave.com/eCxC7etcCOmDwbgP2tv3H6TpQa2iBz5uoRHwez8cVss/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly93d3cu/b3JpZW50YWxtb3Rv/ci5jb20vaW1hZ2Vz/L2FjLW1vdG9ycy93/b3JsZC1rLWdlYXIt/bW90b3JzLWNhdC0z/NTBweC5qcGc" alt="">
+                <div class="text">
+                  <p><b> Gear Motors * 8</b> </p>
+                  <i>Status: <span style="color:green;">Available</span></i>
+                </div>
+                 </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <a style="text-decoration: none;" href="/listofcomponent"><button id="cool">Much more...</button> </a>
+    </div>
+
+    <div class="page8"> 
+      <h1>WHAT ARE YOU WAITING FOR JOIN NOW. </h1>
+  </div>
+
+
+    <div id="footer">
+      <div id="cursor"></div>
+      <div id="cursor-blur"></div>
+  
+      <img
+        src="https://eiwgew27fhz.exactdn.com/wp-content/themes/puttosaurus/img/dots-footer.svg"
+        alt=""
+      />
+      <div id="f1">
+        <img src="" alt="logo" />
+      </div>
+      <div id="f2">
+        <h3>I.E.(I)</h3>
+        <h3>SIC</h3>
+        <h3>About us</h3>
+      </div>
+      <div id="f3">
+        <h3>Electronics Components</h3>
+        <h3>Events</h3>
+        <h3>Contact us</h3>
+        
+      </div>
+      <div id="f4">
+        <h4>
+          Student Innovation Centre , <br />
+          D-block,ECE Department , <br />
+          Asansol Engineering College<br />
+          GMAIL:princeiit423@gmail.com <br />
+          GET DIRECTIONS <br />
+        </h4>
+        <br>
+        <i style="color: #000;">Contact Developer <br>
+        <a style="text-decoration: none; color: #000;" href="https://www.linkedin.com/in/faiz-hussain-257001250/
+        ">LinkedIn</a> <br>
+        <a style="text-decoration: none; color: #000;">Email:faiz18513@gmail.com</a>
+        </i>
+      </div>
+    </div>
+  
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="script.js" async defer></script>
+    <script>
+        const nav=document.querySelector(".nav a");
+const body=document.querySelector("body");
+const cursor=document.querySelector(".cursor");
+const description=document.querySelector(".page2 .description p");
+const featured= document.querySelector(".page3 .featured h1");
+const loop = document.querySelector(".loop");
+const clg = document.querySelector(".page3 .jar .box1");
+const clg2 = document.querySelector(".page3 .jar .box2");
+const clg3 = document.querySelector(".page3 .jar .box3");
+const clg4 = document.querySelector(".page3 .jar .box4");
+const para= document.querySelector(".page2 .description");
+const ecian= document.querySelector(".page4 .container .info");
+const ece= document.querySelector(".page4 .container img");
+const tl= gsap.timeline();
+
+body.addEventListener("mousemove", function(dets){
+    gsap.to(cursor,{
+        x:dets.x,
+        y:dets.y,
+        duration:0.1,
+        delay:0.1 
+    })
+})
+
+
+
+clg.addEventListener("mousemove",function(){
+  gsap.to(clg,{
+    scale:1.05,
+    duration:0.5,
+    delay:0.2
+  })
+
+})
+
+clg.addEventListener("mouseleave",function(){
+  gsap.to(clg,{
+    scale:1,
+    duration:0.5,
+    delay:0.2
+  })
+  
+})
+
+clg2.addEventListener("mousemove",function(){
+  gsap.to(clg2,{
+    scale:1.05,
+    duration:0.5,
+    delay:0.2
+  })
+})
+
+clg2.addEventListener("mouseleave",function(){
+  gsap.to(clg2,{
+    scale:1,
+    duration:0.5,
+    delay:0.2
+  })
+})
+
+clg3.addEventListener("mousemove",function(){
+  gsap.to(clg3,{
+    scale:1.05,
+    duration:0.5,
+    delay:0.2
+  })
+})
+
+clg3.addEventListener("mouseleave",function(){
+  gsap.to(clg3,{
+    scale:1,
+    duration:0.5,
+    delay:0.2
+  })
+})
+
+clg4.addEventListener("mousemove",function(){
+  gsap.to(clg4,{
+    scale:1.05,
+    duration:0.5,
+    delay:0.2
+  })
+})
+
+clg4.addEventListener("mouseleave",function(){
+  gsap.to(clg4,{
+    scale:1,
+    duration:0.5,
+    delay:0.2
+  })
+})
+
+/*gsap.to(".page6 .loop h1",{
+  transform: "translateX(300%)",
+  duration:1,
+  delay:0.5,
+  scrub:2,
+  scrollTrigger:{
+    trigger: ".page6",
+    scroller: "body",
+    start:"top 0%",
+    end: "bottom -100%",
+  }
+
+})  */  
+
+tl.from(".page1 .title h1",{
+    y:30,
+    opacity:0,
+    duration:0.3,
+    delay:0.2,
+    stagger:1,
+})
+
+gsap.from(description,{
+     y:200,
+    opacity:0,
+    stagger:1,
+    scrub:1,
+    duration:1,
+    scrollTrigger:{
+      trigger:description,
+      scroller:"body",        
+      start:"top 40%",
+      end:"top 50%",
+      scrub:2,
+      pin:true,
+    }
+})
+
+
+ gsap.from(".page3 .featured h1",{
+    y:150,
+    opacity:0,
+    duration:2,
+    delay:1.5,
+    scrollTrigger:{
+      trigger:".page3 .featured h1",
+      scroller:"body",
+      scrub:2,
+      start:"top 60%",
+      end:"top 80%",
+      pin:true,
+    }
+ })
+
+ gsap.from(ecian,{
+      x:-100,
+      opacity:0,
+      stagger:1,
+      duration:0.5,
+      delay:0.5,
+      scrollTrigger:{
+        trigger:ecian,
+        scroller:"body",
+        scrub:2,
+        pin:true,
+        start:"top 30%",
+        end:"top 55%",
+      }
+ })
+
+ gsap.from(ece,{
+      x:-100,
+      opacity:0,
+      stagger:1,
+      duration:0.5,
+      delay:0.5,
+      scrollTrigger:{
+        trigger:ece,
+        scroller:"body",
+        scrub:4,
+        pin:true,
+        start:"top 30%",
+        end:"top 55%",
+        
+      }
+ })
+
+ gsap.to(".page8 h1",{
+  transform: "translateX(-100%)",
+  duration:1,
+  delay:0.5,
+  scrollTrigger:{
+      trigger:".page8",
+      scroller:"body",        
+      start:"top 35%",
+      end:"top -100%",
+      scrub:2,
+      pin:true,
+
+  }
+
+})
+
+
+
+const scrollers = document.querySelectorAll(".scroller");
+
+// If a user hasn't opted in for recuded motion, then we add the animation
+if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  addAnimation();
+}
+
+function addAnimation() {
+  scrollers.forEach((scroller) => {
+    // add data-animated="true" to every `.scroller` on the page
+    scroller.setAttribute("data-animated", true);
+
+    // Make an array from the elements within `.scroller-inner`
+    const scrollerInner = scroller.querySelector(".scroller__inner");
+    const scrollerContent = Array.from(scrollerInner.children);
+
+    // For each item in the array, clone it
+    // add aria-hidden to it
+    // add it into the `.scroller-inner`
+    scrollerContent.forEach((item) => {
+      const duplicatedItem = item.cloneNode(true);
+      duplicatedItem.setAttribute("aria-hidden", true);
+      scrollerInner.appendChild(duplicatedItem);
+    });
+  });
+}
+
+
+
+    </script>
+  </body>
+</html>

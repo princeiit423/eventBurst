@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shoe event</title>
+</head>
+
+<body>
+    <div class="container">
+        <form method="get" action="/upcomingevent/<%=singleEvent._id %>/register">
+            <h1>
+                <%= singleEvent.title %>
+            </h1>
+            <p>
+                <%= singleEvent.description %>
+            </p>
+            <img src="<%= singleEvent.posterUrl %>" alt="">
+            <p>
+                <%= singleEvent.date %>
+            </p>
+            <p>
+                <%= singleEvent.location %>
+            </p>
+            <button>register now</button>
+    </div>
+    </form>
+    <% if(username==="iei786" ){ %>
+        <a href="/upcomingevent/<%=singleEvent._id %>/participation"> <button>see participation</button></a>
+        <form method="post" action="/upcomingevent/<%=singleEvent._id %>?_method=DELETE"><button>Delete</button></form>
+        <% } %>
+            
+</body>
+
+</html>

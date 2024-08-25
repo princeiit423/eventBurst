@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Student Innovation Center</title>
+  <meta name="description" content="" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="shortcut icon" href="https://sidcupfamilygolf.com/wp-content/themes/puttosaurus/favicons/favicon-32x32.png"
+    type="image/x-icon" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "montserrat";
+      color: #fff;
+    }
+
+    html,
+    body {
+      height: 100%;
+      width: 100%;
+      background-color: black;
+    }
+
+    *::selection {
+      background-color: #fff;
+      color: #95c11e;
+    }
+
+    body::-webkit-scrollbar {
+      display: block;
+      width: 8px;
+      background: #95c11e;
+    }
+
+    body::-webkit-scrollbar-thumb {
+      background-color: #fff;
+      border-radius: 50px;
+    }
+
+    body {
+      overflow-x: hidden;
+    }
+
+    #nav {
+    height: 130px;
+    width: 100%;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    padding: 0 120px;
+    gap: 50px;
+    justify-content: flex-start;
+    z-index: 999;
+    color: white;
+  }
+  #nav img {
+    height: 4.5vw;
+  }
+  #nav a{
+    text-decoration: none;
+    color: white;
+  }
+  #nav h4 {
+    text-transform: uppercase;
+    font-weight: 500;
+    cursor: pointer;
+    font-size: 1.15vw;
+  }
+  .link{
+    display: flex;
+    gap: 26px;
+    padding-left: 15%;
+  }
+  .link a{
+    text-align: center;
+  }
+
+
+    .heading {
+      position: relative;
+      text-align: center;
+    }
+
+    .heading h2 {
+      font-size: 3vw;
+      color: white;
+      margin: 20px 0;
+    }
+
+    .cont {
+      padding: 50px;
+      display: flex;
+      justify-content: space-evenly;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 280px;
+      height: 280px;
+      min-width: 280px;
+      min-height: 280px;
+      background: white;
+      border-radius: 32px;
+      padding: 3px;
+      position: relative;
+      box-shadow: #604b4a30 0px 70px 30px -50px;
+      transition: all 0.5s ease-in-out;
+    }
+
+    .card .profile-pic {
+      position: absolute;
+      width: calc(100% - 6px);
+      height: calc(100% - 6px);
+      top: 3px;
+      left: 3px;
+      border-radius: 29px;
+      z-index: 1;
+      border: 0px solid #fbb9b6;
+      overflow: hidden;
+      transition: all 0.5s ease-in-out 0.2s, z-index 0.5s ease-in-out 0.2s;
+    }
+
+    .card .profile-pic img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      object-position: 0px 0px;
+      transition: all 0.5s ease-in-out 0s;
+    }
+
+    .card .profile-pic svg {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 0px 0px;
+      transform-origin: 45% 20%;
+      transition: all 0.5s ease-in-out 0s;
+    }
+
+    .card .bottom {
+      position: absolute;
+      bottom: 3px;
+      left: 3px;
+      right: 3px;
+      background: #fbb9b6;
+      top: 80%;
+      border-radius: 29px;
+      z-index: 2;
+      box-shadow: rgba(96, 75, 74, 0.1882352941) 0px 5px 5px 0px inset;
+      overflow: hidden;
+      transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
+    }
+
+    .card .bottom .content {
+      position: absolute;
+      bottom: 0;
+      left: 1.5rem;
+      right: 1.5rem;
+      height: 160px;
+    }
+
+    .card .bottom .content .name {
+      display: block;
+      font-size: 1.2rem;
+      color: white;
+      font-weight: bold;
+    }
+
+    .card .bottom .content .about-me {
+      display: block;
+      font-size: 0.9rem;
+      color: white;
+      margin-top: 1rem;
+      text-wrap: wrap;
+    }
+
+    .card .bottom .bottom-bottom {
+      position: absolute;
+      bottom: 1rem;
+      left: 1.5rem;
+      right: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .card .bottom .bottom-bottom .social-links-container {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .card .bottom .bottom-bottom .social-links-container svg {
+      height: 20px;
+      fill: white;
+      filter: drop-shadow(0 5px 5px rgba(165, 132, 130, 0.1333333333));
+    }
+
+    .card .bottom .bottom-bottom .button {
+      background: white;
+      color: #fbb9b6;
+      border: none;
+      border-radius: 20px;
+      font-size: 0.6rem;
+      padding: 0.4rem 0.6rem;
+      box-shadow: rgba(165, 132, 130, 0.1333333333) 0px 5px 5px 0px;
+    }
+
+    .card .bottom .bottom-bottom .button:hover {
+      background: #f55d56;
+      color: white;
+    }
+
+    .card:hover {
+      border-top-left-radius: 55px;
+    }
+
+    .card:hover .bottom {
+      top: 20%;
+      border-radius: 80px 29px 29px 29px;
+      transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1) 0.2s;
+    }
+
+    .card:hover .profile-pic {
+      width: 100px;
+      height: 100px;
+      aspect-ratio: 1;
+      top: 10px;
+      left: 10px;
+      border-radius: 50%;
+      z-index: 3;
+      border: 7px solid #fbb9b6;
+      box-shadow: rgba(96, 75, 74, 0.1882352941) 0px 5px 5px 0px;
+      transition: all 0.5s ease-in-out, z-index 0.5s ease-in-out 0.1s;
+    }
+
+    .card:hover .profile-pic:hover {
+      transform: scale(1.3);
+      border-radius: 0px;
+    }
+
+    .card:hover .profile-pic img {
+      transform: scale(2.5);
+      object-position: 0px 25px;
+      transition: all 0.5s ease-in-out 0.5s;
+    }
+
+    .card:hover .profile-pic svg {
+      transform: scale(2.5);
+      transition: all 0.5s ease-in-out 0.5s;
+    }
+
+    /* footer */
+    #footer {
+    height: 40vh;
+    width: 100%;
+    background: linear-gradient(to left bottom, #119f3a 0%, #a3d421 80%);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 6.5vw;
+    padding: 0 100px;
+    margin-top: 5%;
+  }
+  #footer > img {
+    position: absolute;
+    left: 0;
+    height: 100%;
+    z-index: 0;
+  }
+  #f1 img {
+    height: 100px;
+  }
+  #f1,
+  #f2,
+  #f3,
+  #f4 {
+    width: fit-content;
+    position: relative;
+    z-index: 99;
+    /* background-color: red; */
+  }
+  #f2 h3 {
+    font-size: 1.6vw;
+    white-space: nowrap;
+    text-transform: uppercase;
+    color: #000;
+    font-weight: 900;
+    margin-bottom: 8px;
+  }
+  
+  #f3 h3 {
+    font-size: 1.6vw;
+    white-space: nowrap;
+    text-transform: uppercase;
+    color: #000;
+    font-weight: 800;
+    margin-bottom: 8px;
+  }
+  #f4 h4 {
+    font-size: 1vw;
+    white-space: nowrap;
+    text-transform: uppercase;
+    color: #000;
+    font-weight: 600;
+    line-height: 20px;
+    margin-bottom: 8px;
+  }
+
+
+    @media (max-width: 768px) {
+      #nav {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0 20px;
+        height: auto;
+      }
+
+      #nav img {
+        height: auto;
+        width: 50%;
+        margin-bottom: 10px;
+      }
+
+      #nav h4 {
+        font-size: 2.5vw;
+      }
+
+      .heading h2 {
+        font-size: 5vw;
+      }
+
+      .card {
+        height: auto;
+        min-width: auto;
+        width: 90%;
+        margin: 10px 0;
+      }
+
+      .card .bottom .content {
+        height: auto;
+        padding-bottom: 10px;
+      }
+
+      .card .bottom .bottom-bottom {
+        position: relative;
+        bottom: auto;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      #footer {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 20px;
+      }
+
+      #footer>img {
+        display: none;
+      }
+
+      #f1 img {
+        height: 50px;
+      }
+
+      #f2 h3,
+      #f3 h3,
+      #f4 h4 {
+        font-size: 3vw;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  
+  <div id="nav">
+    <img src="" alt="" />
+    <a href="/">HOME</a>
+    <a href="/pastEvent">PAST EVENT</a>
+    <a href="/upcomingevent">UPCOMING EVENT</a>
+    <a href="/profile">PROFILE</a>
+    <a href="/admin">ADMIN</a>
+    <a href="/contact">CONTACTS</a>
+    <div class="link">
+      <% if(!currUser){ %>
+        <a href="/signup">SIGNUP</a>
+        <a href="/login">LOGIN</a>
+        <% } else {%>
+        <a href="/logout">LOGOUT</a>
+        <% } %>
+    </div>
+  </div>
+
+
+  <div id="cursor"></div>
+  <div id="cursor-blur"></div>
+
+  <div class="heading">
+    <h2>Past Events</h2>
+  </div>
+
+  <div class="cont">
+    <% for(event of allEvent) { %>
+      <div class="card">
+        <a href="/pastEvent/<%=event._id %>" class="listing-link">
+          <div class="profile-pic">
+            <img src="<%= event.posterUrl %>" alt="">
+          </div>
+          <div class="bottom">
+            <div class="content">
+              <span class="name">
+                <%=event.title %>
+              </span>
+              <span class="about-me">
+                <%=event.description.slice(0,100) %>
+              </span>
+            </div>
+            <div class="bottom-bottom">
+              <div class="social-links-container"></div>
+              <button class="button">See Details</button>
+            </div>
+          </div>
+        </a>
+      </div>
+      <% } %>
+  </div>
+
+  <div id="footer">
+    <div id="cursor"></div>
+    <div id="cursor-blur"></div>
+
+    <img
+      src="https://eiwgew27fhz.exactdn.com/wp-content/themes/puttosaurus/img/dots-footer.svg"
+      alt=""
+    />
+    <div id="f1">
+      <img src="" alt="logo" />
+    </div>
+    <div id="f2">
+      <h3>I.E.(I)</h3>
+      <h3>SIC</h3>
+      <h3>About us</h3>
+    </div>
+    <div id="f3">
+      <h3>Electronics Components</h3>
+      <h3>Events</h3>
+      <h3>Contact us</h3>
+      
+    </div>
+    <div id="f4">
+      <h4>
+        Student Innovation Centre , <br />
+        D-block,ECE Department , <br />
+        Asansol Engineering College<br />
+        GMAIL:princeiit423@gmail.com <br />
+        GET DIRECTIONS <br />
+      </h4>
+      <br>
+      <i style="color: #000;">Contact Developer <br>
+      <a style="text-decoration: none; color: #000;" href="www.linkedin.com/in/
+      faiz-hussain-257001250/
+      ">LinkedIn</a> <br>
+      <a style="text-decoration: none; color: #000;">Email:faiz18513@gmail.com</a>
+      </i>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.1/gsap.min.js"
+    integrity="sha512-qF6akR/fsZAB4Co1QDDnUXWnaQseLGXoniuSuSlPQK6+aWhlMZcHzkasCSlnWoe+TJuudlka1/IQ01Dnhgq95g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.1/ScrollTrigger.min.js"
+    integrity="sha512-IHDCHrefnBT3vOCsvdkMvJF/MCPz/nBauQLzJkupa4Gn4tYg5a6VGyzIrjo6QAUy3We5HFOZUlkUpP0dkgE60A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>

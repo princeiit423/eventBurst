@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event register</title>
+</head>
+<body>
+    <div class="container">
+        <form method="post" action="/upcomingevent/<%=singleEvent._id%>/register">
+            <label>name</label>
+            <input type="text" name="name">
+
+            
+            <label>department</label>
+            <input type="text" name="department">
+
+            
+            <label>roll</label>
+            <input type="number" name="roll">
+
+            
+            <label>semester</label>
+            <input type="number" name="semester">
+
+            
+            <label>year</label>
+            <input type="number" name="year">
+
+            <button>submit</button>
+        </form>
+        
+    </div>
+</body>
+</html>

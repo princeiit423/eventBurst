@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style> 
+            *{
+                margin: 0px;
+                padding: 0px;
+                font-family: sans-serif;
+                color: white;
+            }
+            .container{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-top: 30px;
+                
+            }
+            .card{
+                border-radius: 30px;
+                height: 400px;
+                width: 400px;
+                background: linear-gradient(45deg, #04051dea 0%, #2b566e 100%);
+            }
+            .info{
+                gap:20px;
+                padding: 15px;
+            }
+            p{
+                margin-bottom: 10px;
+            
+            }
+            h1{
+                margin-bottom: 20px;
+                padding: 10px;
+            }
+            .powered{
+                margin-left: 200px;
+            }
+            img{
+                height: 50px;
+                width: 50px;
+                margin-left: 235px;
+                border-radius: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container"> 
+            <div class="card"> 
+            <h1>Registration Details:</h1>
+            <div class="info">
+            <p><b>Order Id:</b>abgh456nmklo895124786 </p> 
+            <p><b>Name:</b><%=name %></p>
+            <p><b>Department: </b><%=department %></p>
+            <p><b>Roll Number: </b><%=roll %></p>
+            <p><b>Semester: </b><%=semester %></p>
+            <p> <b>Year: </b><%=year %></p>
+            <p><b>Status:</b>Success</p>
+            <br>
+            <p class="powered"><b>Powered By I.E.I </b> </p>
+            <img src="https://www.ieindia.org/Image/iei_Logo.jpg">
+               
+            </div>
+        </div>
+    </div>
+        
+        <script src="" async defer></script>
+    </body>
+</html>

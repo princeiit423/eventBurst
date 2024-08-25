@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Participation list</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Student Details</h2>
+        <% for(let student of participation.userregister){ %>
+        <p>Name:<%=student.name %></p>
+        <p>Department:<%=student.department %></p>
+        <p>Roll Number:<%=student.roll%></p>
+        <p>Semester:<%=student.semester %></p>
+        
+        <p>Date:<%=student.date %></p>
+        <hr>
+        <%  } %>
+    </div>
+    
+
+  
+</body>
+</html>
