@@ -21,7 +21,7 @@ const isAdmin = require("./isAdmin_middleware.js");
 const methodOverride= require("method-override");
 
 require("dotenv").config();
-const port = process.env.PORT;
+const port = process.env.PORT||4000;
 
 
 app.set("views", path.join(__dirname, "views"));
