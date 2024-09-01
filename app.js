@@ -177,7 +177,7 @@ app.get("/logout", (req, res, next) => {
 
 app.get("/pastEvent", isLoggedIn, async (req, res,next) => {
   try {
-    const allEvent = await Event.find({});
+    const allEvent = await Event.find().sort({_id:-1});
     res.render("pastevent/pastevent.ejs", { allEvent });
   } catch (err) {
     next(err);
