@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Attendance Sheet</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    .table-header {
+      background-color: #4F46E5; /* Indigo */
+    }
+    .table-header th {
+      color: white;
+    }
+    .table-row:hover {
+      background-color: rgba(79, 70, 229, 0.1); /* Light Indigo Hover */
+    }
+    
+      /* Responsive design adjustments */
+  @media (max-width: 768px) {
+    .header {
+      padding: 10px 4px;
+      position:static;
+    }
+    .header nav {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      text-align:right
+    }
+    .header nav a, .header nav button {
+      font-size: 14px;
+      text-align:right;
+    }
+  }
+    
+  </style>
+</head>
+<body class="bg-gray-100">
+
+
+  <!-- Header -->
+  <header class="header flex justify-between items-center py-4 px-8 bg-white shadow-md  w-full top-0 z-50">
+    <div class="text-2xl font-bold text-indigo-600">Student <span class="text-black">Innovation</span> Center</div>
+    <nav class="space-x-6 text-sm">
+      <a href="#" class="hover:text-indigo-600">Home</a>
+      <a href="/upcomingevent" class="hover:text-indigo-600">Upcoming Events</a>
+      <a href="/pastEvent" class="hover:text-indigo-600">Past Events</a>
+      <a href="/profile" class="hover:text-indigo-600">Profile</a>
+      <a href="/contact" class="hover:text-indigo-600">Contacts</a>
+      <a href="/admin" class="hover:text-indigo-600">Admin</a>
+      <% if(admi){ %>
+        <a href="/logout" class="px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700">Logout</a>
+      <% } else { %>
+      <a href="/login" class="px-4 py-2 text-purple-600 hover:underline">Login</a>
+      <a href="/signup" class="px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700">Signup</a>
+    <% } %>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main class="pt-16 px-6 lg:px-16">
+    <section id="attendance" class="my-4">
+      <h2 class="text-4xl font-bold text-center mb-8 text-indigo-600">Attendance <span class="text-black">Records</span></h2>
+
+      <!-- Attendance Table -->
+      <div class="bg-white p-6 shadow-lg rounded-lg">
+        <h3 class="text-2xl font-bold mb-4 text-indigo-600">Attendance Records</h3>
+        <table class="w-full table-auto border-collapse">
+          <thead class="table-header">
+            <tr>
+              <th class="px-4 py-2 border">S.No</th>
+              <th class="px-4 py-2 border">Student Name</th>
+              <th class="px-4 py-2 border">Department</th>
+              <th class="px-4 py-2 border">Entry Time</th>
+              <th class="px-4 py-2 border">Exit Time</th>
+              <th class="px-4 py-2 border">Purpose of Visiting</th>
+              <th class="px-4 py-2 border">Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% attendanceRecords.forEach((record, index) => { %>
+              <tr class="table-row">
+                <td class="px-4 py-2 border text-center"><%= index + 1 %></td>
+                <td class="px-4 py-2 border"><%= record.name %></td>
+                <td class="px-4 py-2 border"><%= record.department %></td>
+                <td class="px-4 py-2 border"><%= record.entryTime %></td>
+                <td class="px-4 py-2 border"><%= record.exitTime ? record.exitTime : 'N/A' %></td>
+                <td class="px-4 py-2 border"><%= record.purposeOfVisiting %></td>
+                <td class="px-4 py-2 border"><%= new Date(record.date).toLocaleDateString() %></td>
+              </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+ 
+  <!-- Footer -->
+  <footer class="bg-indigo-900 text-white py-12">
+    <div class="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
+      <!-- About Us -->
+      <div>
+        <h2 class="font-bold text-lg">Student Innovation Center</h2>
+        <p class="mt-4 text-gray-400">
+          Your ultimate platform to host, organize, and explore incredible events.
+        </p>
+      </div>
+      <!-- Quick Links -->
+      <div>
+        <h2 class="font-bold text-lg">Quick Links</h2>
+        <ul class="mt-4 space-y-2">
+          <li><a href="#" class="hover:underline">Home</a></li>
+          <li><a href="#upcoming" class="hover:underline">Upcoming Events</a></li>
+          <li><a href="#past" class="hover:underline">Past Events</a></li>
+          <li><a href="#contacts" class="hover:underline">Contacts</a></li>
+        </ul>
+      </div>
+      <!-- Support -->
+      <div>
+        <h2 class="font-bold text-lg">Support</h2>
+        <ul class="mt-4 space-y-2">
+          <li><a href="#" class="hover:underline">Help Center</a></li>
+          <li><a href="#" class="hover:underline">FAQs</a></li>
+          <li><a href="#" class="hover:underline">Terms & Conditions</a></li>
+          <li><a href="#" class="hover:underline">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <!-- Contact Us -->
+      <div>
+        <h2 class="font-bold text-lg">Contact Us</h2>
+        <p class="mt-4 text-gray-400">
+          Email: <a href="mailto:info@eventhive.com" class="underline">info@eventhive.com</a>
+        </p>
+        <p class="mt-2 text-gray-400">
+          Phone: +123 456 7890
+        </p>
+        <div class="mt-4 flex space-x-4" style="width:5rem;">
+          <a href="#" class="hover:opacity-75">
+            <img src="src/facebook.png" alt="Facebook">
+          </a>
+          <a href="#" class="hover:opacity-75">
+            <img src="src/instagram.png" alt="Twitter">
+          </a>
+          <a href="#" class="hover:opacity-75">
+            <img src="src/linkedin.png" alt="LinkedIn">
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="mt-8 text-center text-sm text-gray-400">
+      © 2024 Student Innovation Center. All rights reserved.
+    </div>
+  </footer>
+</body>
+</html>

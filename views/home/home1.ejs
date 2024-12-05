@@ -1,1095 +1,781 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Student Innovation Center</title>
-    <meta name="description" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="style.css" />
-    <style>
-        *{
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
-    
-
-}
-html,body{
-    height: 100%;
-    width: 100%;
-}
-body::-webkit-scrollbar {
-    display: block;
-    width: 8px;
-    background: white;
-  }
-  body::-webkit-scrollbar-thumb {
-    background-color:greenyellow;
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Hive</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    .featured-events-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      padding: 0 20px;
+    }
   
-    border-radius: 50px;
-  }
-
-
-#nav {
-    height: 130px;
-    width: 100%;
-    background-color: black;
-    display: flex;
-    align-items: center;
-    padding: 0 120px;
-    gap: 50px;
-    position: fixed;
-    justify-content: flex-start;
-    z-index: 999;
-    color: white;
-  }
-  #nav img {
-    height: 4.5vw;
-  }
-  #nav a{
-    text-decoration: none;
-    color: white;
-  }
-  #nav h4 {
-    text-transform: uppercase;
-    font-weight: 500;
-    cursor: pointer;
-    font-size: 1.15vw;
-  }
-  .link{
-    display: flex;
-    gap: 26px;
-    padding-left: 15%;
-  }
-  .link a{
-    text-align: center;
-  }
-
-
+    .featured-event {
+      background-color: #f7f5ff; /* Light purple background */
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease-in-out;
+      position: relative;
+    }
   
-.page1{
-    background-color: white;
-    background-image: url(src/king.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    
-
-    height: 140%;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    
-}
-.cursor{
-    height: 20px;
-    width: 20px;
-    background-color: greenyellow;
-    border-radius: 50px;
-    position: fixed;
-    z-index: 1;
-}
-
-.page1 .title h1{
-    margin-top: 3%;
-    font-size: 10rem;
-color:white;
-    /* background-image: url(tron.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-clip: text; */
-    
-    
-}
-.page1 .title{
-    position: absolute;
-    top:12%;
-}
-
-
-.page2{
-    background-color: black;
-    height: 120%;
-    width: 100%;
-}
-.page2 .description{
-    color: white;
-    padding-left: 50px;
-    text-align: left;
-    margin-right: 20%;
-    
-}
-.page2 .description b{
-    color: green;
-    margin-top:80px ;
-
-}
-.page2 .description p{
-    font-size: 3.5rem;
-
-}
-
-.page2 .description button{
-    height: 3rem;
-    width: 17rem;
-    background-color:#a3d421;
-    border-radius: 30px;
-    margin-top: 50px;
-    border-color: transparent;
-    cursor: pointer;
-}
-
-
-.page3{
-    background-color: black;
-    height: 350%;
-    width: 100%;
-    color: white;
-
-}
-
-.page3 .featured h1{
-    font-size: 15rem;
-    text-wrap: wrap;
-    text-align: center;
-    line-height: 13rem;
-}
-.page3 .jar{
-    display: flex;
-    justify-content:space-around;
-    margin-top: 10rem;
-}
-.page3 .jar .box1{
-    height: 45rem;
-    width: 32rem;
-    background-image: url(src/featured1.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    border-radius: 3rem;  
-}
-.page3 .jar .box2{
-    height: 45rem;
-    width: 32rem;
-    background-image: url(src/inhand.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    border-radius: 3rem;
-}
-
-.page3 .jar .box3{
-  height: 45rem;
-  width: 32rem;
-  background-image: url(src/gm.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  border-radius: 3rem;  
-}
-.page3 .jar .box4{
-  height: 45rem;
-  width: 32rem;
-  background-image: url(src/engineers.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  border-radius: 3rem;
-}
-
-
-.page3 .txt-jar {
-    display: flex;
-    justify-content: space-around;
-}
-
-.page3 .txt-jar h3{
-    margin-top: 1rem;
-    font-size: 1.5rem;
-    font-family: Arial, Helvetica, sans-serif;
-}
-.page3 .txt-jar h3 span{
-    color: grey;
-    font-size: 1.2rem;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-.page3 .past {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 3rem;
-}
-.page3 .past a{
-    margin-right: 260px;
-}
-.page3 .past button{
-    width: 20rem;
-    height: 3rem;
-    border-radius: 30px;
-    font-weight: 600;
-    position: relative;
-    left: 60%;
-}
-
-.page4{
-    background-color: black;
-    height: 160%;
-    width: 100%;
-}
-.page4 .container{
-    position: relative;
-    top: 20%;
-    display: flex;
-    justify-content: space-between;
-}
-.page4 .container .info{
-    font-size: 8rem;
-    color: white;
-    width: 50%;
-    padding: 20px;
-}
-.page4 .container img{
-    background-color:pink;
-    background-size: cover;
-    background-repeat: no-repeat;
-    width: 35%;
-    height: 50%;
-    margin-right: 50px;
-    border-radius: 40px;
-    
-}
-.page4 button{
-    position: relative;
-    top: 21%;
-    left: 73%;
-    width: 150px;
-    height: 30px;
-    border-radius: 30px;
-    border-color: transparent;
-    cursor: pointer;
-}
-.page5{
-    height: 240%;
-    width: 100%;
-    border-top-left-radius: 160px 160px;
-    border-top-right-radius: 160px 160px;
-    
-}
-.page5 h1{
-    position: relative;
-    left: 25%;
-    top: 5%;
-    font-size: 10rem;
-    text-wrap: wrap;
-    width: 50%;
-    text-align: center;
-}
-.page5 h2{
-    font-size: 5rem;
-    margin-top: 20px;
-    text-align: left;
-    align-items: center;
-    padding: 20px 0px 5px 160px;
-}
-.page5 .content{
-    margin-top: 80px;
-    position: relative;
-}
-.page5 .content hr{
-    color: black;
-    width: 80%;
-    margin-left: 11%;
-    margin-top: 100px;
-    stroke: black;
-    font-weight: bolder;
-}
-.page5 .content a{
-    text-decoration: none;
-    color: black;
-}
-a button{
-    position: relative;
-    width: 15%;
-    height: 2%;
-    left: 40%;
-    margin-top: 3%;
-    border-radius: 20px;
-    border-color: transparent;
-    background-color: greenyellow;
-    cursor: pointer;
-}
-.page6{
-    height: 130%;
-    width: 100%;
-    
-}
-.page6 .title p{
-    font-size: 15rem;
-    text-align: center;
-    margin-top: 1%;
-}
-
-.scroller {
-    max-width: 100%;
-    height: 38%;
-    margin-top: 3%;
-  }
+    .featured-event:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
   
-  .scroller__inner {
-    padding-block: 1rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
+    .featured-event-image-wrapper {
+      width: 100%;
+      overflow: hidden;
+      border-radius: 10px 10px 0 0;
+      position: relative;
+    }
   
-  .scroller[data-animated="true"] {
-    overflow: hidden;
-    -webkit-mask: linear-gradient(
-      90deg,
-      transparent,
-      white 20%,
-      white 80%,
-      transparent
-    );
-    mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
-  }
+    .featured-event-image {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      transition: transform 0.3s ease-in-out;
+    }
   
-  .scroller[data-animated="true"] .scroller__inner {
-    width: max-content;
-    flex-wrap: nowrap;
-    animation: scroll var(--_animation-duration, 40s)
-      var(--_animation-direction, forwards) linear infinite;
-  }
+    .featured-event:hover .featured-event-image {
+      transform: scale(1.05);
+    }
   
-  .scroller[data-direction="right"] {
-    --_animation-direction: reverse;
-  }
+    .featured-event-content {
+      padding: 20px;
+    }
   
-  .scroller[data-direction="left"] {
-    --_animation-direction: forwards;
-  }
+    .featured-event-content h3 {
+      color: #4a3a9e; /* Darker purple for headings */
+    }
   
-  .scroller[data-speed="fast"] {
-    --_animation-duration: 20s;
-  }
+    .featured-event-content p {
+      color: #555; /* Dark gray for text */
+    }
   
-  .scroller[data-speed="slow"] {
-    --_animation-duration: 60s;
-  }
+    .event-details {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 10px;
+    }
   
-  @keyframes scroll {
-    to {
-      transform: translate(calc(-50% - 0.5rem));
+    .event-details li {
+      margin-bottom: 5px;
+    }
+  
+    .featured-event-content button {
+      margin-top: 10px;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+  
+    /* Responsive Design */
+    @media screen and (max-width: 768px) {
+      .featured-events-container {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+    }
+  
+    @media screen and (max-width: 480px) {
+      .featured-event-content {
+        padding: 15px;
+      }
+    }
+
+  /* Responsive design adjustments */
+  @media (max-width: 768px) {
+    .header {
+      padding: 10px 4px;
+      position:static;
+    }
+    .header nav {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      text-align:right
+    }
+    .header nav a, .header nav button {
+      font-size: 14px;
+      text-align:right;
     }
   }
-  
-  /* general styles */
-  
-  :root {
-    --clr-neutral-100: hsl(0, 0%, 100%);
-    --clr-primary-100: hsl(205, 15%, 58%);
-    --clr-primary-400: hsl(215, 25%, 27%);
-    --clr-primary-800: hsl(217, 33%, 17%);
-    --clr-primary-900: hsl(218, 33%, 9%);
-  }
-  .scroller .scroller__inner img{
-        border-radius: 7px;
-        width: 400px;
-        height: 300px; 
-        background-size: cover;
-        background-repeat: no-repeat;  
-  }
-  .page6 a button{
-    position: relative;
-    width: 15%;
-    height: 4%;
-    left: 40%;
-    margin-top: 3%;
-    border-radius: 20px;
-    border-color: transparent;
-    background-color: greenyellow;
-    cursor: pointer;
+
+  /* Optional: Box shadow for a more elegant look */
+.group:hover img {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-.page7{
-  width: 100%;
-  height: 175%;
-  background-color: #000;
-}
-.page7 .container{
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  gap: 5%;
-}
-.page7 h1{
-  text-align: center;
-  font-size: 10rem;
-  color: white;
-}
-.page7 .card{
-  display: flex;
-  flex-direction: column;
-  border-radius: 10px;
-  height: 300px;
-  width: 250px;
-  margin-left: 30px;
-  margin-right: 30px;
-  margin-top: 60px;
-  border-radius: 10px;
-}
-.page7 .card img{
-  width: 250px;
-  height: 200px ;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-.page7 .card .text{
-  color: black;
-  width: 250px;
-  height: 100px;
-  background-color: #F3F8FF;
-  padding: 3px;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-}
-.page7 .card .text p,i{
-  padding: 10px;
-}
-.page7 .card .text p{
-  font-size: 1.2rem;
-}
+   
+</style>
+</head>
+<body class="font-sans text-gray-800">
 
-.page7 .card:hover{
-  border: 2px solid greenyellow;
-  
-}
-.page7 button {
-  height: 3%;
-  width: 10%;
-  position: relative;
-  left: 43%;
-  border-radius: 30px;
-  background-color: greenyellow;
-  border: transparent;
-  cursor: pointer;
-
-}
-
-.page8{
-  height: 50%;
-  width: 100%;
-  background-color: black;
-  color: white;
-  overflow-x:hidden;
-  text-wrap: nowrap;
-}
-.page8 h1{
-  font-size: 9rem;
-  text-align: center;
-  position: relative;
-  top: 25%;
-}
-
-
-#cool {
-  --color: #560bad;
-  font-family: inherit;
-  display: inline-block;
-  width: 10em;
-  height: 2.6em;
-  line-height: 2.5em;
-  margin: 20px;
-  position: relative;
-  cursor: pointer;
-  overflow: hidden;
-  border: 2px solid var(--color);
-  transition: color 0.5s;
-  z-index: 1;
-  font-size: 17px;
-  border-radius: 6px;
-  font-weight: 500;
-  color: var(--color);
-  border: transparent;
-  border-radius: 20px;
-}
-
-#cool:before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  background: var(--color);
-  height: 150px;
-  width: 250px;
-  border-radius: 50%;
-}
-
-#cool:hover {
-  color: #fff;
-}
-
-#cool:before {
-  top: 100%;
-  left: 100%;
-  transition: all 0.7s;
-}
-
-#cool:hover:before {
-  top: -30px;
-  left: -30px;
-}
-
-#cool:active:before {
-  background: #3a0ca3;
-  transition: background 0s;
-}
-
-
-
-
-#footer {
-    height: 40vh;
-    width: 100%;
-    background: linear-gradient(to left bottom, #119f3a 0%, #a3d421 80%);
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 6.5vw;
-    padding: 0 100px;
-    
-  }
-  #footer > img {
-    position: absolute;
-    left: 0;
-    height: 100%;
-    z-index: 0;
-  }
-  #f1 img {
-    height: 100px;
-  }
-  #f1,
-  #f2,
-  #f3,
-  #f4 {
-    width: fit-content;
-    position: relative;
-    z-index: 99;
-    /* background-color: red; */
-  }
-  #f2 h3 {
-    font-size: 1.6vw;
-    white-space: nowrap;
-    text-transform: uppercase;
-    color: #000;
-    font-weight: 900;
-    margin-bottom: 8px;
-  }
-  
-  #f3 h3 {
-    font-size: 1.6vw;
-    white-space: nowrap;
-    text-transform: uppercase;
-    color: #000;
-    font-weight: 800;
-    margin-bottom: 8px;
-  }
-  #f4 h4 {
-    font-size: 1vw;
-    white-space: nowrap;
-    text-transform: uppercase;
-    color: #000;
-    font-weight: 600;
-    line-height: 20px;
-    margin-bottom: 8px;
-  }
-  .scroller__inner img:hover{
-    transform: scale(1.15);
-    transition-delay: 0.2s;
-    border-radius: 17px;
-  }
-  .page4 .container img:hover{
-    transform: scale(1.05);
-    transition-duration:1s;
-  }
-
-
-    </style>
-  </head>
-  <body>
-    <div id="nav">
-      <img src="btch.jpg" alt="" />
-      <a href="/">HOME</a>
-      <a href="/pastEvent">PAST EVENT</a>
-      <a href="/upcomingevent">UPCOMING EVENT</a>
-      <a href="/profile">PROFILE</a>
-      <a href="/admin">ADMIN</a>
-      <a href="/contact">CONTACTS</a>
-      <div class="link">
-        <% if(!currUser){ %>
-        <a href="/signup">SIGNUP</a>
-        <a href="/login">LOGIN</a>
-        <% } else {%>
-        <a href="/logout">LOGOUT</a>
-        <% } %>
-      </div>
-    </div>
-
-    <div class="cursor">
-      <div class="cursor-blur"></div>
-    </div>
-    <div class="page1">
-      <div class="title">
-        <h1>Welcome to</h1>
-        <h1>Student</h1>
-        <h1>Innovation</h1>
-        <h1>Center</h1>
-      </div>
-    </div>
-    <div class="page2">
-      <div class="description">
-        <p>
-          <span style="color: lawngreen;
-    font-size: 2rem;">What we do? </span><br />The Student Innovation Centre is a
-          dynamic hub where creativity meets technology. We provide students
-          with access to a wide range of <span style="color: lawngreen;">electronic components</span>, empowering them
-          to turn ideas into reality. Through hands-on workshops, technical
-          events, and collaborative projects, we foster innovation, <span style="color: lawngreen;">skill
-          development</span>, and a passion for engineering.
-        </p>
-        <a style="position: relative;
-    left: -42%;" href="https://www.facebook.com/groups/1450438815241431"><button id="cool">see Details</button></a>
-      </div>
-    </div>
-    <div class="page3">
-      <div class="featured"><h1>Featured Events</h1></div>
-      <div class="jar">
-        <div class="box1"></div>
-        <div class="box2"></div>
-      </div>
-      <div class="txt-jar">
-        <h3>
-          Electronic Innovation 8.0 <br />
-          <span>A model making competetion </span>
-        </h3>
-        <h3>
-          Techsplore <br />
-          <span>In-hand electronic workshop</span>
-        </h3>
-      </div>
-
-      <div class="jar">
-        <div class="box3"></div>
-        <div class="box4"></div>
-      </div>
-      <div class="txt-jar">
-        <h3>
-          Annual General Meet <br />
-          <span>Held election for designation</span>
-        </h3>
-        <h3>
-          PPT Competetion<br />
-          <span>PPT competetion on engineer's day</span>
-        </h3>
-      </div>
-
-      <br />
-      <div class="past"><a href="/pastEvent"><button id="cool">View Past Events</button> </a></div>
-
-      <div class="thread-effect"></div>
-    </div>
-
-    <% for(e of winners){ %>
-    <div class="page4">
-      <div class="container">
-        <div class="info">
-          <p>Winner OF</p>
-          <p>ECEian OF The Week</p>
-        </div>
-        <img src="<%=e.imageUrl%>" alt="img" />
-      </div>
-      <a href="/winner"><button id="cool">See More</button></a>
-    </div>
+  <!-- Header -->
+<header class="header flex justify-between items-center py-4 px-8 bg-white shadow-md  w-full top-0 z-50">
+  <div class="text-2xl font-bold text-indigo-600">Student <span class="text-black">Innovation</span> Center</div>
+  <nav class="space-x-6 text-sm">
+    <a href="/" class="hover:text-indigo-600">Home</a>
+    <a href="/upcomingevent" class="hover:text-indigo-600">Upcoming Events</a>
+    <a href="/pastEvent" class="hover:text-indigo-600">Past Events</a>
+    <a href="/profile" class="hover:text-indigo-600">Profile</a>
+    <a href="/contact" class="hover:text-indigo-600">Contacts</a>
+    <a href="/admin" class="hover:text-indigo-600">Admin</a>
+    <% if(admi){ %>
+      <a href="/logout" class="px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700">Logout</a>
+    <% } else { %>
+    <a href="/login" class="px-4 py-2 text-purple-600 hover:underline">Login</a>
+    <a href="/signup" class="px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700">Signup</a>
   <% } %>
-    <div class="page5">
-      <h1>WHERE WE THRIVE</h1>
+  </nav>
+</header>
 
-      <div class="content">
-        <hr />
-        <a href="#">
-          <h2>Frequently Organising Workshop.</h2>
-        </a>
-        <hr />
-        <a href="#">
-          <h2>Providing Expensive Components.</h2>
-        </a>
-        <hr />
-        <a href="#">
-          <h2>Held Election for Designation.</h2>
-        </a>
-        <hr />
-        <a href="#">
-          <h2>Organising Awesome Events.</h2>
-        </a>
-      </div>
-      <a href="/upcomingevent"><button id="cool">Explore</button> </a>
+  <!-- Hero Section -->
+  <section class="relative bg-cover bg-center h-screen" style="background-image: url('https://i.postimg.cc/mZ8dgk2q/img.jpg');">
+    <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+    <div class="relative z-10 text-center flex flex-col items-center justify-center h-full text-white px-4">
+      <h1 class="text-5xl md:text-6xl font-bold leading-snug ">
+        Innovating Today, Inspiring Tomorrow
+      </h1>
+      <p class="mt-6 text-xl">Empowering the next generation of innovators</p>
+      <a href="/upcomingevent" class="mt-8 px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700">
+        Explore Events
+      </a>
     </div>
+  </section>
 
-    <div class="page6">
-      <div class="title">
-        <p>Archive</p>
-      </div>
-      <div class="scroller" data-direction="right" data-speed="slow">
-        <div class="scroller__inner">
-          <img src="src/a1.jpg" alt="" />
-          <img src="src/a2.jpg" alt="" />
-          <img src="src/a3.jpg" alt="" />
-          <img src="src/a4.jpg" alt="" />
-          <img src="src/a5.jpg" alt="" />
-          <img src="src/a6.jpg" alt="" />
-          <img src="src/a7.jpg" alt="" />
-          <img src="src/a8.jpg" alt="" />
-          <img src="https://i.postimg.cc/VNVW9gtH/Whats-App-Image-2024-08-18-at-21-04-35-3f1ed572.jpg" alt="" />
-          <img src="https://i.postimg.cc/6Q3hGg8v/Whats-App-Image-2024-08-18-at-21-05-26-6d51c059.jpg" alt="" />
-          <img src="https://i.postimg.cc/13yByfPM/Whats-App-Image-2024-08-18-at-21-14-15-88af42a9.jpg" alt="" />
-          <img src="https://i.postimg.cc/zGpjv8GN/Whats-App-Image-2024-08-18-at-21-14-15-e0e33921.jpg" alt="" />
-          <img src="https://i.postimg.cc/GhFz0k0H/Whats-App-Image-2024-08-18-at-21-14-16-9534468b.jpg" alt="" />
-          <img src="https://i.postimg.cc/fW0BKGB7/Whats-App-Image-2024-08-18-at-21-14-16-cd48326e.jpg" alt="" />
-          <img src="https://i.postimg.cc/ZKtjDwMG/Whats-App-Image-2024-08-18-at-21-14-16-f47ba3da.jpg" alt="" />
-          <img src="https://i.postimg.cc/KjLf8TRp/Whats-App-Image-2024-08-18-at-21-14-17-e981a1c3.jpg" alt="" />
-          <img src="https://i.postimg.cc/N0JpJY3D/Whats-App-Image-2024-08-18-at-21-14-17-f55b1478.jpg" alt="" />
-          <img src="https://i.postimg.cc/yd2nKjYS/Whats-App-Image-2024-08-18-at-21-14-18-154c1038.jpg" alt="" />
-        </div>
-      </div>
-      <a href="/pastEvent"><button id="cool">Explore</button> </a>
-      <br />
-
-      
-    </div>
-
-    <div class="page7">
-      <h1>Components</h1>
-      <h1>We Have </h1>
-      <div class="container"> 
-      <div class="card">
-        <img src="https://img-c.udemycdn.com/course/750x422/982708_2483_2.jpg" alt="">
-        <div class="text">
-          <p><b> Arduino</b> </p>
-          <i>Status: <span style="color:green;">Available </span></i>
-        </div>
-         </div>
-
-         <div class="card">
-          <img src="https://imgs.search.brave.com/hlirWju86dQHiaGv7y-JJK61HhGQBwfUVec8ptAGYI8/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NzFSS1RvYXhtbkwu/anBn" alt="">
-          <div class="text">
-            <p><b> Drone Motor * 4</b> </p>
-            <i>Status: <span style="color:green;">Available </span></i>
+  <!-- Upcoming Events Section -->
+  <section id="upcoming" class="py-12 px-8">
+    <h2 class="text-3xl font-bold text-center text-indigo-600 mb-8">Upcoming <span class="text-purple-600">Events</span></h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <% for(e of events) { %>
+      <!-- Event Card -->
+      <div class="bg-white shadow-md rounded-lg overflow-hidden">
+        <img src="<%=e.posterUrl%>" alt="Event" class="w-full h-40 object-cover">
+        <div class="p-4">
+          <h3 class="font-bold text-lg"><%=e.title%></h3>
+          <p class="text-sm text-indigo-600"><%=e.dateOfEvent.toLocaleDateString('en-US', {
+            weekday: 'short',
+            month: 'short',
+            day: 'numeric',
+            year: 'numeric',
+          })%></p>
+          <p class="text-sm text-gray-500"><%=e.location%></p>
+          <p class="text-sm text-gray-500">Organised by <%=e.club%></p>
+          <div class="mt-4  text-center">
+            <a href="/upcomingevent/<%=e._id%>" 
+               class="inline-block px-6 py-2 text-sm font-semibold text-white bg-indigo-600 rounded hover:bg-indigo-700 transition">
+              Register Now
+            </a>
           </div>
-           </div>
-
-           <div class="card">
-            <img src="https://imgs.search.brave.com/ngObqHbVdzh5KKS0zzV3qmylVPLjT7lypLOXz3WpgPA/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9zLmFs/aWNkbi5jb20vQHNj/MDQva2YvSDM1YWQz/OTRmNTAxZTQwNTg5/MGE3ODI4OTVjZjY1/MzJjSC5qcGdfMzAw/eDMwMC5qcGc" alt="">
-            <div class="text">
-              <p><b> GPS Module * 4</b> </p>
-              <i>Status: <span style="color:green;">Available </span></i>
-            </div>
-             </div>
-
-             <div class="card">
-              <img src="https://imgs.search.brave.com/9JNw2VE6mmkAmKSlPGePVm4qJKQUBiWX5tFWK723IyM/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NzFEdG94dW9KTUwu/anBn" alt="">
-              <div class="text">
-                <p><b> Drone Kit Set * 1</b> </p>
-                <i>Status: <span style="color:green;">Available </span></i>
-              </div>
-               </div>
-
-               <div class="card">
-                <img src="https://imgs.search.brave.com/eCxC7etcCOmDwbgP2tv3H6TpQa2iBz5uoRHwez8cVss/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly93d3cu/b3JpZW50YWxtb3Rv/ci5jb20vaW1hZ2Vz/L2FjLW1vdG9ycy93/b3JsZC1rLWdlYXIt/bW90b3JzLWNhdC0z/NTBweC5qcGc" alt="">
-                <div class="text">
-                  <p><b> Gear Motors * 8</b> </p>
-                  <i>Status: <span style="color:green;">Available</span></i>
-                </div>
-                 </div>
         </div>
-        <br>
-        <br>
-        <br>
-        <a style="text-decoration: none;" href="/listofcomponent"><button id="cool">Much more...</button> </a>
+      </div>
+      <% } %>
+      <!-- Repeat similar cards -->
     </div>
+    <a href="/upcomingevent">
+    <button class="block mx-auto mt-8 px-6 py-2 bg-purple-600 text-white rounded hover:bg-purple-700">
+      Explore More    
+    </button>
+  </a>
+  </section>
 
-    <div class="page8"> 
-      <h1>WHAT ARE YOU WAITING FOR JOIN NOW. </h1>
+<!-- Featured Event Section -->
+<section id="featured-events" class="py-16 px-6 bg-white">
+  <div class="max-w-7xl mx-auto text-center mb-12">
+    <h2 class="text-4xl font-extrabold mb-6 text-purple-700"><span class="text-indigo-600">Featured</span> Events</h2>
+    <p class="text-lg mb-10 text-gray-600">Experience our most celebrated events and activities.</p>
   </div>
 
 
-    <div id="footer">
-      <div id="cursor"></div>
-      <div id="cursor-blur"></div>
-  
-      <img
-        src="https://eiwgew27fhz.exactdn.com/wp-content/themes/puttosaurus/img/dots-footer.svg"
-        alt=""
-      />
-      <div id="f1">
-        <img src="" alt="logo" />
+  <!-- Featured Event Grid -->
+  <div class="featured-events-container">
+    <!-- Featured Event 1 -->
+    <div class="featured-event">
+      <div class="featured-event-image-wrapper">
+        <img src="https://i.postimg.cc/26msNKwZ/ei-9-0.jpg" alt="Featured Event 1" class="featured-event-image">
       </div>
-      <div id="f2">
-        <h3>I.E.(I)</h3>
-        <h3>SIC</h3>
-        <h3>About us</h3>
-      </div>
-      <div id="f3">
-        <h3>Electronics Components</h3>
-        <h3>Events</h3>
-        <h3>Contact us</h3>
-        
-      </div>
-      <div id="f4">
-        <h4>
-          Student Innovation Centre , <br />
-          D-block,ECE Department , <br />
-          Asansol Engineering College<br />
-          GMAIL:princeiit423@gmail.com <br />
-          GET DIRECTIONS <br />
-        </h4>
-        <br>
-        <i style="color: #000;">Contact Developer <br>
-        <a style="text-decoration: none; color: #000;" href="https://www.linkedin.com/in/faiz-hussain-257001250/
-        ">LinkedIn</a> <br>
-        <a style="text-decoration: none; color: #000;">Email:faiz18513@gmail.com</a>
-        </i>
+      <div class="featured-event-content">
+        <h3 class="text-2xl font-bold mb-2 text-purple-800">Electronics Innovation 9.0</h3>
+        <p class="mb-4 text-gray-700">Electronic Innovation 9.0 continues the legacy as a premier national-level competition, uniting bright minds to craft innovative electronics and software projects. This year’s edition promises to be bigger and better, providing a platform for students to showcase their technical prowess and creativity. With a focus on solving real-world problems, EI 9.0 encourages participants to push boundaries and redefine the possibilities in technology</p>
+        <ul class="event-details mb-4 text-gray-600">
+          <li><strong>Date:</strong> October 24, 2024</li>
+          <li><strong>Time:</strong> 10:00 AM - 5:00 PM</li>
+          <li><strong>Location:</strong>Central Library & Tagore Hall, AEC</li>
+        </ul>
+        <button class="px-4 py-2 bg-purple-700 text-white font-semibold rounded-lg hover:bg-purple-800">Know More</button>
       </div>
     </div>
-  
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="script.js" async defer></script>
-    <script>
-        const nav=document.querySelector(".nav a");
-const body=document.querySelector("body");
-const cursor=document.querySelector(".cursor");
-const description=document.querySelector(".page2 .description p");
-const featured= document.querySelector(".page3 .featured h1");
-const loop = document.querySelector(".loop");
-const clg = document.querySelector(".page3 .jar .box1");
-const clg2 = document.querySelector(".page3 .jar .box2");
-const clg3 = document.querySelector(".page3 .jar .box3");
-const clg4 = document.querySelector(".page3 .jar .box4");
-const para= document.querySelector(".page2 .description");
-const ecian= document.querySelector(".page4 .container .info");
-const ece= document.querySelector(".page4 .container img");
-const tl= gsap.timeline();
+    <!-- Featured Event 2 -->
+    <div class="featured-event">
+      <div class="featured-event-image-wrapper">
+        <img src="https://i.postimg.cc/mZ8dgk2q/img.jpg" alt="Featured Event 2" class="featured-event-image">
+      </div>
+      <div class="featured-event-content">
+        <h3 class="text-2xl font-bold mb-2 text-purple-800">Electronics Innovation 8.0</h3>
+        <p class="mb-4 text-gray-700">Electronic Innovation 8.0 is a prestigious national-level annual tech event designed to ignite creativity and inspire young minds. Students from across the nation come together to showcase groundbreaking projects crafted using cutting-edge electronic components. This platform fosters innovation, teamwork, and technical excellence, encouraging participants to solve real-world challenges with their ingenuity.</p>
+        <ul class="event-details mb-4 text-gray-600">
+          <li><strong>Date:</strong> October 12, 2023</li>
+          <li><strong>Time:</strong> 9:00 AM - 6:00 PM</li>
+          <li><strong>Location:</strong> Basketball Ground, AEC</li>
+        </ul>
+        <button class="px-4 py-2 bg-purple-700 text-white font-semibold rounded-lg hover:bg-purple-800">Know more</button>
+      </div>
+    </div>
 
-body.addEventListener("mousemove", function(dets){
-    gsap.to(cursor,{
-        x:dets.x,
-        y:dets.y,
-        duration:0.1,
-        delay:0.1 
-    })
-})
+    <!-- Featured Event 3 -->
+    <div class="featured-event">
+      <div class="featured-event-image-wrapper">
+        <img src="https://i.postimg.cc/hvNMcJB5/techs.jpg" alt="Featured Event 2" class="featured-event-image">
+      </div>
+      <div class="featured-event-content">
+        <h3 class="text-2xl font-bold mb-2 text-purple-800">TechSplore-Inhand Electronics Workshop</h3>
+        <p class="mb-4 text-gray-700">Techsplore: In-Hand Electronics Workshop is an immersive experience designed to empower students with practical knowledge of electronic components and their applications. This workshop offers hands-on training to help participants design and build exciting projects, fostering innovation and creativity. In a special initiative to broaden its reach, we are thrilled to invite students from Kendriya Vidyalaya to join this enriching journey.</p>
+        <ul class="event-details mb-4 text-gray-600">
+          <li><strong>Date:</strong> July 28, 2023</li>
+          <li><strong>Time:</strong> 1:30 PM - 3:30 PM</li>
+          <li><strong>Location:</strong> Student Innovation Center, AEC</li>
+        </ul>
+        <button class="px-4 py-2 bg-purple-700 text-white font-semibold rounded-lg hover:bg-purple-800">Know more</button>
+      </div>
+    </div>
 
-
-
-clg.addEventListener("mousemove",function(){
-  gsap.to(clg,{
-    scale:1.05,
-    duration:0.5,
-    delay:0.2
-  })
-
-})
-
-clg.addEventListener("mouseleave",function(){
-  gsap.to(clg,{
-    scale:1,
-    duration:0.5,
-    delay:0.2
-  })
-  
-})
-
-clg2.addEventListener("mousemove",function(){
-  gsap.to(clg2,{
-    scale:1.05,
-    duration:0.5,
-    delay:0.2
-  })
-})
-
-clg2.addEventListener("mouseleave",function(){
-  gsap.to(clg2,{
-    scale:1,
-    duration:0.5,
-    delay:0.2
-  })
-})
-
-clg3.addEventListener("mousemove",function(){
-  gsap.to(clg3,{
-    scale:1.05,
-    duration:0.5,
-    delay:0.2
-  })
-})
-
-clg3.addEventListener("mouseleave",function(){
-  gsap.to(clg3,{
-    scale:1,
-    duration:0.5,
-    delay:0.2
-  })
-})
-
-clg4.addEventListener("mousemove",function(){
-  gsap.to(clg4,{
-    scale:1.05,
-    duration:0.5,
-    delay:0.2
-  })
-})
-
-clg4.addEventListener("mouseleave",function(){
-  gsap.to(clg4,{
-    scale:1,
-    duration:0.5,
-    delay:0.2
-  })
-})
-
-/*gsap.to(".page6 .loop h1",{
-  transform: "translateX(300%)",
-  duration:1,
-  delay:0.5,
-  scrub:2,
-  scrollTrigger:{
-    trigger: ".page6",
-    scroller: "body",
-    start:"top 0%",
-    end: "bottom -100%",
-  }
-
-})  */  
-
-tl.from(".page1 .title h1",{
-    y:30,
-    opacity:0,
-    duration:0.3,
-    delay:0.2,
-    stagger:1,
-})
-
-gsap.from(description,{
-     y:200,
-    opacity:0,
-    stagger:1,
-    scrub:1,
-    duration:1,
-    scrollTrigger:{
-      trigger:description,
-      scroller:"body",        
-      start:"top 40%",
-      end:"top 50%",
-      scrub:2,
-      pin:true,
-    }
-})
+    <!-- Featured Event 4 -->
+    <div class="featured-event">
+      <div class="featured-event-image-wrapper">
+        <img src="https://i.postimg.cc/90wt8W7t/agm.jpg" alt="Featured Event 2" class="featured-event-image">
+      </div>
+      <div class="featured-event-content">
+        <h3 class="text-2xl font-bold mb-2 text-purple-800">Annual General Meet</h3>
+        <p class="mb-4 text-gray-700">The Annual General Meet is a pivotal event where the future leadership of our club is shaped. Held every year, this gathering provides a platform for electing students to key positions such as Convener, Co-Convener, Student Coordinator, and more. It’s an opportunity to recognize emerging leaders, foster responsibility, and ensure the smooth functioning of our initiatives. This tradition not only celebrates democracy but also strengthens the collaborative spirit of our student community.</p>
+        <ul class="event-details mb-4 text-gray-600">
+          <li><strong>Date:</strong> April 16, 2024</li>
+          <li><strong>Time:</strong> 3:00 PM - 5:00 PM</li>
+          <li><strong>Location:</strong> Tagore Seminar Hall, AEC</li>
+        </ul>
+        <button class="px-4 py-2 bg-purple-700 text-white font-semibold rounded-lg hover:bg-purple-800">Know more</button>
+      </div>
+    </div>
+  </div>
+</section>
 
 
- gsap.from(".page3 .featured h1",{
-    y:150,
-    opacity:0,
-    duration:2,
-    delay:1.5,
-    scrollTrigger:{
-      trigger:".page3 .featured h1",
-      scroller:"body",
-      scrub:2,
-      start:"top 60%",
-      end:"top 80%",
-      pin:true,
-    }
- })
+<!-- Create Event Section -->
+<section class="py-16 px-8 bg-gray-100" style="background-color:#10107B;">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+    <!-- Text Content -->
+    <div>
+      <h2 class="text-4xl font-bold text-white">Create Your Own Event</h2>
+      <p class="mt-4 text-white">
+        Ready to host? Let your imagination lead the way. Design, share, and organize events tailored to your needs effortlessly.
+      </p>
+      <a href="/contact"><button class="mt-6 px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700">
+        Start Now
+      </button> </a>
+    </div>
+    <!-- Image -->
+    <div class="relative">
+      <img src="src/xyz.png" alt="Event Planning" class="rounded-lg shadow-md">
+      <div class="absolute inset-0 rounded-lg"></div>
+    </div>
+  </div>
+</section>
 
- gsap.from(ecian,{
-      x:-100,
-      opacity:0,
-      stagger:1,
-      duration:0.5,
-      delay:0.5,
-      scrollTrigger:{
-        trigger:ecian,
-        scroller:"body",
-        scrub:2,
-        pin:true,
-        start:"top 30%",
-        end:"top 55%",
-      }
- })
+<!-- History / Archive Section -->
+<section id="history" class="bg-gray-100 py-16 px-8">
+  <h2 class="text-4xl font-bold text-center text-indigo-600 mb-12">Our <span class="text-purple-600">History</span></h2>
+  <div class="max-w-6xl mx-auto">
+    <!-- Timeline Wrapper -->
+    <div class="relative">
+      <!-- Vertical Line (Only visible on larger screens) -->
+      <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-1 bg-indigo-600 h-full"></div>
 
- gsap.from(ece,{
-      x:-100,
-      opacity:0,
-      stagger:1,
-      duration:0.5,
-      delay:0.5,
-      scrollTrigger:{
-        trigger:ece,
-        scroller:"body",
-        scrub:4,
-        pin:true,
-        start:"top 30%",
-        end:"top 55%",
-        
-      }
- })
+      <!-- Timeline Item 1 -->
+      <div class="flex flex-col md:flex-row items-center md:items-start mb-12">
+        <div class="md:w-1/2 md:pr-8 text-right order-2 md:order-1">
+          <h3 class="text-2xl font-bold text-indigo-600">Hackathon 2022</h3>
+          <p class="text-sm text-gray-500">December 15, 2022</p>
+          <p class="mt-2 text-gray-700">
+            Hosted an innovative hackathon for over 200 participants from across the nation. The event focused on solving real-world problems through technology.
+          </p>
+        </div>
+        <div class="md:w-1/2 md:pl-8 mt-6 md:mt-0 order-1 md:order-2">
+          <img src="https://i.postimg.cc/mZ8dgk2q/img.jpg" alt="Hackathon" class="w-full h-auto rounded-lg shadow-md">
+        </div>
+      </div>
 
- gsap.to(".page8 h1",{
-  transform: "translateX(-100%)",
-  duration:1,
-  delay:0.5,
-  scrollTrigger:{
-      trigger:".page8",
-      scroller:"body",        
-      start:"top 35%",
-      end:"top -100%",
-      scrub:2,
-      pin:true,
+      <!-- Timeline Item 2 -->
+      <div class="flex flex-col md:flex-row-reverse items-center md:items-start mb-12">
+        <div class="md:w-1/2 md:pl-8 text-left">
+          <h3 class="text-2xl font-bold text-indigo-600">Tech Symposium</h3>
+          <p class="text-sm text-gray-500">April 10, 2023</p>
+          <p class="mt-2 text-gray-700">
+            Organized a tech symposium with industry experts delivering talks on AI, Blockchain, and IoT. The event also featured a paper presentation competition.
+          </p>
+        </div>
+        <div class="md:w-1/2 md:pr-8 mt-6 md:mt-0">
+          <img src="https://i.postimg.cc/mZ8dgk2q/img.jpg" alt="Tech Symposium" class="w-full h-auto rounded-lg shadow-md">
+        </div>
+      </div>
 
-  }
+      <!-- Timeline Item 3 -->
+      <div class="flex flex-col md:flex-row items-center md:items-start mb-12">
+        <div class="md:w-1/2 md:pr-8 text-right order-2 md:order-1">
+          <h3 class="text-2xl font-bold text-indigo-600">Annual Science Fair</h3>
+          <p class="text-sm text-gray-500">August 5, 2023</p>
+          <p class="mt-2 text-gray-700">
+            Held our annual science fair, showcasing innovative projects from students and promoting STEM education through interactive workshops.
+          </p>
+        </div>
+        <div class="md:w-1/2 md:pl-8 mt-6 md:mt-0 order-1 md:order-2">
+          <img src="https://i.postimg.cc/mZ8dgk2q/img.jpg" alt="Science Fair" class="w-full h-auto rounded-lg shadow-md">
+        </div>
+      </div>
 
-})
-
-
-
-const scrollers = document.querySelectorAll(".scroller");
-
-// If a user hasn't opted in for recuded motion, then we add the animation
-if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-  addAnimation();
-}
-
-function addAnimation() {
-  scrollers.forEach((scroller) => {
-    // add data-animated="true" to every `.scroller` on the page
-    scroller.setAttribute("data-animated", true);
-
-    // Make an array from the elements within `.scroller-inner`
-    const scrollerInner = scroller.querySelector(".scroller__inner");
-    const scrollerContent = Array.from(scrollerInner.children);
-
-    // For each item in the array, clone it
-    // add aria-hidden to it
-    // add it into the `.scroller-inner`
-    scrollerContent.forEach((item) => {
-      const duplicatedItem = item.cloneNode(true);
-      duplicatedItem.setAttribute("aria-hidden", true);
-      scrollerInner.appendChild(duplicatedItem);
-    });
-  });
-}
+      <!-- Timeline Item 4 -->
+      <div class="flex flex-col md:flex-row-reverse items-center md:items-start">
+        <div class="md:w-1/2 md:pl-8 text-left">
+          <h3 class="text-2xl font-bold text-indigo-600">Engineer’s Day Celebration</h3>
+          <p class="text-sm text-gray-500">September 15, 2023</p>
+          <p class="mt-2 text-gray-700">
+            Celebrated Engineer’s Day with a series of technical events, including a coding marathon, a quiz competition, and keynote sessions by accomplished engineers.
+          </p>
+        </div>
+        <div class="md:w-1/2 md:pr-8 mt-6 md:mt-0">
+          <img src="https://i.postimg.cc/mZ8dgk2q/img.jpg" alt="Engineer’s Day" class="w-full h-auto rounded-lg shadow-md">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=" flex items-center justify-center p-10 ">
+  <button class="w-[150px] bg-black h-[50px] my-3 flex items-center justify-center rounded-xl cursor-pointer relative overflow-hidden transition-all duration-500 ease-in-out shadow-md hover:scale-105 hover:shadow-lg before:absolute before:top-0 before:-left-full before:w-full before:h-full before:bg-gradient-to-r before:from-[#009b49] before:to-[rgb(105,184,141)] before:transition-all before:duration-500 before:ease-in-out before:z-[-1] before:rounded-xl hover:before:left-0 text-[#fff]">
+    See More...
+  </button>
+</div>
+</section>
 
 
+<!-- ECEian of the Week Section -->
+ <% for (e of winners) { %>
+<section id="eceian-of-the-week" class="bg-gradient-to-r from-purple-100 to-indigo-100 py-16 px-6">
+  <div class="max-w-6xl mx-auto flex flex-col lg:flex-row items-center lg:items-start gap-12">
+    <!-- Left Side: Text Content -->
+    <div class="lg:w-1/2 relative mt-20">
+      <!-- Decorative Element -->
+      <div class="absolute -top-10 -left-10 w-24 h-24 bg-purple-300 rounded-full opacity-30 blur-2xl"></div>
 
-    </script>
-  </body>
+      <h2 class="text-5xl font-extrabold text-purple-700 mb-6">
+        ECEian <span class="text-indigo-700">of the Week</span>
+      </h2>
+      <h3 class="text-3xl font-bold text-indigo-600 mb-4">✨ <%=e.name%> ✨</h3>
+      <p class="text-sm text-gray-600 mb-4">Winner of the Weekly Quiz - <%=e.date.toLocaleDateString('en-US', {
+        weekday: 'short',
+        month: 'short',
+        day: 'numeric',
+        year: 'numeric',
+      })%>
+      </p>
+      <p class="text-lg text-gray-800 mb-6">
+        Congratulations to <span class="font-bold text-purple-700"><%=e.name%></span> from <span class="font-bold text-purple-700"><%=e.department%></span> department for your outstanding performance! You've earned the title of <span class="font-bold">"ECEian of the Week."</span>
+      </p>
+      <p class="text-lg text-gray-700 italic">
+        “Your efforts inspire everyone to strive for excellence!”
+      </p>
+
+      <!-- Decorative Badge -->
+      <a href="/winner" class="mt-6 inline-block px-6 py-2 bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold text-sm rounded-lg shadow-md hover:scale-105 transition-transform">
+        View More
+      </a>
+    </div>
+
+    <!-- Right Side: Winner Image -->
+    <div class="lg:w-1/2 flex justify-center relative">
+      <!-- Decorative Shape -->
+      <div class="absolute -top-10 -right-10 w-40 h-40 bg-indigo-300 rounded-full opacity-20 blur-xl"></div>
+
+      <!-- Image -->
+      <div class="relative group">
+        <img 
+          src="<%=e.imageUrl%>" 
+          alt="ECEian of the Week" 
+          class="w-72 md:w-96 rounded-xl shadow-lg border-4 border-purple-500 group-hover:scale-105 transition-transform">
+        <!-- Caption -->
+        <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-purple-700 text-white text-sm font-medium px-4 py-2 rounded-lg shadow-lg">
+          Outstanding Performer
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<% } %>
+
+
+<!-- Glimpses of Events Section -->
+<section class="bg-bg-gray-100 py-12">
+  <div class="container mx-auto px-6">
+    <!-- Section Title -->
+    <h2 class="text-4xl font-extrabold text-purple-700 text-center mb-10 tracking-tight">
+      Projects on our <span class="text-indigo-700">Events</span>
+    </h2>
+
+    <!-- Creative Image Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <!-- Image 1 -->
+      <div class="relative group">
+        <img src="https://i.postimg.cc/rsr8BWt5/drone-workshop.jpg" alt="Event 1" class="w-full h-auto rounded-lg transform transition-transform duration-300 group-hover:scale-105">
+        <div class="absolute inset-0 bg-black bg-opacity-40 rounded-lg opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-300">
+          <p class="text-white text-lg font-semibold">Drone-Quadcopter</p>
+        </div>
+      </div>
+
+      <!-- Image 2 -->
+      <div class="relative group">
+        <img src="https://i.postimg.cc/qR5wcpw0/p3.jpg" alt="Event 2" class="w-full h-auto rounded-lg transform transition-transform duration-300 group-hover:scale-105">
+        <div class="absolute inset-0 bg-black bg-opacity-40 rounded-lg opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-300">
+          <p class="text-white text-lg font-semibold">Anti Obstacle RC Car</p>
+        </div>
+      </div>
+
+      <!-- Image 3 -->
+      <div class="relative group">
+        <img src="https://i.postimg.cc/tgD2T3Vs/p5.jpg" alt="Event 3" class="w-full h-auto rounded-lg transform transition-transform duration-300 group-hover:scale-105">
+        <div class="absolute inset-0 bg-black bg-opacity-40 rounded-lg opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-300">
+          <p class="text-white text-lg font-semibold">Free Energy Generator</p>
+        </div>
+      </div>
+
+      <!-- Image 4 -->
+      <div class="relative group">
+        <img src="https://i.postimg.cc/k44wt2xf/p6.jpg" alt="Event 4" class="w-full h-auto rounded-lg transform transition-transform duration-300 group-hover:scale-105">
+        <div class="absolute inset-0 bg-black bg-opacity-40 rounded-lg opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-300">
+          <p class="text-white text-lg font-semibold">Automatic Anti Fire Car</p>
+        </div>
+      </div>
+
+      <!-- Image 5 -->
+      <div class="relative group">
+        <img src="https://i.postimg.cc/1XVHJb7F/p2.jpg" alt="Event 5" class="w-full h-auto rounded-lg transform transition-transform duration-300 group-hover:scale-105">
+        <div class="absolute inset-0 bg-black bg-opacity-40 rounded-lg opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-300">
+          <p class="text-white text-lg font-semibold">Path Finder Car</p>
+        </div>
+      </div>
+
+      <!-- Image 6 -->
+      <div class="relative group">
+        <img src="https://i.postimg.cc/YjcxV8Ts/p1.jpg" alt="Event 6" class="w-full h-auto rounded-lg transform transition-transform duration-300 group-hover:scale-105">
+        <div class="absolute inset-0 bg-black bg-opacity-40 rounded-lg opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-300">
+          <p class="text-white text-lg font-semibold">Air Defence System</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Words from Our College Principal, HOD, and Coordinator -->
+<section class="bg-gradient-to-r from-indigo-500 via-purple-500 to-blue-500 py-12">
+  <div class="container mx-auto px-6">
+    <!-- Section Title -->
+    <h2 class="text-3xl font-extrabold text-white text-center mb-8 tracking-wide">
+      Words from Our Mentors
+    </h2>
+
+    <!-- Mentor Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Principal's Section -->
+      <div class="bg-white border border-gray-200 shadow-lg rounded-lg p-4 transform hover:scale-105 transition duration-300">
+        <img src="src/gs.jpg" alt="Principal Image" class="w-24 h-24 mx-auto rounded-full border-4 border-indigo-600 mb-4 shadow-lg">
+        <h3 class="text-lg font-semibold text-indigo-600 mb-2">Dr. Gourishankar Panda</h3>
+        <p class="text-gray-700 mb-2"><strong>Position:</strong> Vice Principal, AEC</p>
+        <blockquote class="text-gray-600 italic leading-relaxed mb-4 text-xs">
+          <span class="text-indigo-500 font-bold text-lg">“</span>The Student Innovation Center has continuously demonstrated excellence in innovation and creativity. It is inspiring to see students channeling their passion for technology into impactful projects.<span class="text-indigo-500 font-bold text-lg">”</span>
+        </blockquote>
+        <div class="bg-indigo-100 text-indigo-600 text-xs font-medium py-1 px-3 rounded-lg inline-block">
+          Supporting Excellence Since 2015
+        </div>
+      </div>
+
+      <!-- HOD's Section -->
+      <div class="bg-white border border-gray-200 shadow-lg rounded-lg p-4 transform hover:scale-105 transition duration-300">
+        <img src="src/hod.jpg" alt="HOD Image" class="w-24 h-24 mx-auto rounded-full border-4 border-indigo-600 mb-4 shadow-lg">
+        <h3 class="text-lg font-semibold text-indigo-600 mb-2">Dr. Chittajit Sarkar</h3>
+        <p class="text-gray-700 mb-2"><strong>Position:</strong> HOD, ECE Department</p>
+        <blockquote class="text-gray-600 italic leading-relaxed mb-4 text-xs">
+          <span class="text-indigo-500 font-bold text-lg">“</span>The ECE department is proud to support the SIC. Their dedication to learning and teamwork has set a benchmark for excellence in the field of technology.<span class="text-indigo-500 font-bold text-lg">”</span>
+        </blockquote>
+        <div class="bg-indigo-100 text-indigo-600 text-xs font-medium py-1 px-3 rounded-lg inline-block">
+          Empowering Innovation Since 2015
+        </div>
+      </div>
+
+      <!-- Coordinator's Section -->
+      <div class="bg-white border border-gray-200 shadow-lg rounded-lg p-4 transform hover:scale-105 transition duration-300">
+        <img src="src/puri.jpg" alt="Coordinator Image" class="w-24 h-24 mx-auto rounded-full border-4 border-indigo-600 mb-4 shadow-lg">
+        <h3 class="text-lg font-semibold text-indigo-600 mb-2">Dr. Shiv Charan Puri</h3>
+        <p class="text-gray-700 mb-2"><strong>Position:</strong> Advisiory IEI & SIC</p>
+        <blockquote class="text-gray-600 italic leading-relaxed mb-4 text-xs">
+          <span class="text-indigo-500 font-bold text-lg">“</span>The Tech Club’s consistent achievements and collaborative efforts reflect the strength of our academic and extracurricular culture.<span class="text-indigo-500 font-bold text-lg">”</span>
+        </blockquote>
+        <div class="bg-indigo-100 text-indigo-600 text-xs font-medium py-1 px-3 rounded-lg inline-block">
+          Founder of SIC, Since 2015
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Why Choose Us Section -->
+<section id="why-choose-us" class="py-16 px-6 bg-gradient-to-r from-purple-100 to-blue-100 relative overflow-hidden">
+  <div class="max-w-7xl mx-auto text-center">
+    <!-- Heading -->
+    <h2 class="text-4xl font-extrabold text-purple-700 mb-10 animate__animated animate__fadeIn">Why Choose <span class="text-black">Us? <span></h2>
+
+    <!-- Glassmorphism Card Container -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+      <!-- Card 1: Events -->
+      <div class="flex flex-col bg-white/30 border border-white/40 backdrop-blur-md rounded-lg shadow-lg p-6 transition-transform duration-300 hover:scale-105">
+        <!-- Icon -->
+        <div class="text-4xl text-purple-600 mb-4">
+          <i class="fas fa-calendar-alt"></i>
+        </div>
+        <!-- Title -->
+        <h3 class="text-2xl font-semibold text-purple-700 mb-2">Frequent Events & Workshops</h3>
+        <!-- Description -->
+        <p class="text-gray-700">
+          Our club hosts regular workshops and events, providing students with valuable learning and networking opportunities.
+        </p>
+      </div>
+
+      <!-- Card 2: Competitions -->
+      <div class="flex flex-col bg-white/30 border border-white/40 backdrop-blur-md rounded-lg shadow-lg p-6 transition-transform duration-300 hover:scale-105">
+        <!-- Icon -->
+        <div class="text-4xl text-purple-600 mb-4">
+          <i class="fas fa-trophy"></i>
+        </div>
+        <!-- Title -->
+        <h3 class="text-2xl font-semibold text-purple-700 mb-2">National Level Competitions</h3>
+        <!-- Description -->
+        <p class="text-gray-700">
+          Participate in our annual national-level competitions to showcase your skills and gain recognition.
+        </p>
+      </div>
+
+      <!-- Card 3: Components -->
+      <div class="flex flex-col bg-white/30 border border-white/40 backdrop-blur-md rounded-lg shadow-lg p-6 transition-transform duration-300 hover:scale-105">
+        <!-- Icon -->
+        <div class="text-4xl text-purple-600 mb-4">
+          <i class="fas fa-plug"></i>
+        </div>
+        <!-- Title -->
+        <h3 class="text-2xl font-semibold text-purple-700 mb-2">Electronics Components</h3>
+        <!-- Description -->
+        <p class="text-gray-700">
+          We provide high-quality electronic components, enabling you to work on exciting projects and experiments.
+        </p>
+      </div>
+
+      <!-- Card 4: Elections -->
+      <div class="flex flex-col bg-white/30 border border-white/40 backdrop-blur-md rounded-lg shadow-lg p-6 transition-transform duration-300 hover:scale-105">
+        <!-- Icon -->
+        <div class="text-4xl text-purple-600 mb-4">
+          <i class="fas fa-vote-yea"></i>
+        </div>
+        <!-- Title -->
+        <h3 class="text-2xl font-semibold text-purple-700 mb-2">Elections for Designation</h3>
+        <!-- Description -->
+        <p class="text-gray-700">
+          We hold elections to empower students and provide them with leadership roles, fostering teamwork and responsibility.
+        </p>
+      </div>
+
+      <!-- Card 5: ECEian of the Week -->
+      <div class="flex flex-col bg-white/30 border border-white/40 backdrop-blur-md rounded-lg shadow-lg p-6 transition-transform duration-300 hover:scale-105">
+        <!-- Icon -->
+        <div class="text-4xl text-purple-600 mb-4">
+          <i class="fas fa-award"></i>
+        </div>
+        <!-- Title -->
+        <h3 class="text-2xl font-semibold text-purple-700 mb-2">ECEian of the Week</h3>
+        <!-- Description -->
+        <p class="text-gray-700">
+          Join our weekly quiz events and get recognized as the 'ECEian of the Week', earning a certificate of achievement.
+        </p>
+      </div>
+
+      <!-- Card 6: Industrial Visits -->
+      <div class="flex flex-col bg-white/30 border border-white/40 backdrop-blur-md rounded-lg shadow-lg p-6 transition-transform duration-300 hover:scale-105">
+        <!-- Icon -->
+        <div class="text-4xl text-purple-600 mb-4">
+          <i class="fas fa-building"></i>
+        </div>
+        <!-- Title -->
+        <h3 class="text-2xl font-semibold text-purple-700 mb-2">Industrial Visits</h3>
+        <!-- Description -->
+        <p class="text-gray-700">
+          We organize industrial visits to provide students with real-world insights and experiences in the electronics industry.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Frequently Asked Questions (FAQ) Section -->
+<section id="faq" class="py-16 px-6 bg-gradient-to-r from-blue-900 to-indigo-900 relative overflow-hidden">
+  <div class="max-w-7xl mx-auto text-center">
+    <!-- Heading -->
+    <h2 class="text-4xl font-extrabold text-white mb-10 animate__animated animate__fadeIn">Frequently Asked Questions</h2>
+
+    <!-- FAQ Container -->
+    <div class="space-y-8">
+      <!-- Question 1 -->
+      <div class="bg-white/20 backdrop-blur-md border border-white/30 rounded-lg shadow-lg p-6 transition-transform duration-300 hover:scale-105">
+        <h3 class="text-xl font-semibold text-blue-100 mb-2">Q1: What kind of events does the club organize?</h3>
+        <p class="text-gray-200">
+          Our club organizes a variety of events including workshops, seminars, annual competitions, and social activities that help students build practical skills and foster connections.
+        </p>
+      </div>
+
+      <!-- Question 2 -->
+      <div class="bg-white/20 backdrop-blur-md border border-white/30 rounded-lg shadow-lg p-6 transition-transform duration-300 hover:scale-105">
+        <h3 class="text-xl font-semibold text-blue-100 mb-2">Q2: How can I become a member of the club?</h3>
+        <p class="text-gray-200">
+          Joining our club is simple. Visit our 'Join Us' section to download the registration form and submit it as per the guidelines provided.
+        </p>
+      </div>
+
+      <!-- Question 3 -->
+      <div class="bg-white/20 backdrop-blur-md border border-white/30 rounded-lg shadow-lg p-6 transition-transform duration-300 hover:scale-105">
+        <h3 class="text-xl font-semibold text-blue-100 mb-2">Q3: What is 'ECEian of the Week'?</h3>
+        <p class="text-gray-200">
+          'ECEian of the Week' is a weekly quiz competition where students can showcase their knowledge and win a certificate of achievement.
+        </p>
+      </div>
+
+      <!-- Question 4 -->
+      <div class="bg-white/20 backdrop-blur-md border border-white/30 rounded-lg shadow-lg p-6 transition-transform duration-300 hover:scale-105">
+        <h3 class="text-xl font-semibold text-blue-100 mb-2">Q4: Do you provide support for projects?</h3>
+        <p class="text-gray-200">
+          Yes, we provide resources, mentorship, and access to a variety of electronic components to help students successfully complete their projects.
+        </p>
+      </div>
+
+      <!-- Question 5 -->
+      <div class="bg-white/20 backdrop-blur-md border border-white/30 rounded-lg shadow-lg p-6 transition-transform duration-300 hover:scale-105">
+        <h3 class="text-xl font-semibold text-blue-100 mb-2">Q5: What kind of industrial visits do you organize?</h3>
+        <p class="text-gray-200">
+          We arrange industrial visits to various electronics and technology companies to give students real-world exposure and practical knowledge of the industry.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Join Us Now Section -->
+<section id="join-us" class="bg-gradient-to-r from-indigo-100 to-purple-100 py-16 px-6">
+  <div class="max-w-6xl mx-auto text-center relative">
+    <!-- Decorative Circle -->
+    <div class="absolute -top-8 -left-8 w-28 h-28 bg-purple-400 rounded-full blur-lg opacity-30"></div>
+    <div class="absolute -bottom-8 -right-8 w-36 h-36 bg-indigo-400 rounded-full blur-lg opacity-30"></div>
+
+    <!-- Heading -->
+    <h2 class="text-5xl font-extrabold text-purple-700 mb-6">What Are You Waiting For?</h2>
+    <p class="text-lg text-gray-800 mb-8 max-w-3xl mx-auto">
+      Join our vibrant community of learners, innovators, and achievers today! Be a part of the excitement, the challenges, and the growth.  
+    </p>
+    <p class="text-lg text-gray-600 italic mb-6">
+      “Your journey towards excellence starts here. Let's achieve great things together!”
+    </p>
+
+    <!-- Download Button -->
+    <a 
+      href="src/reg.form.pdf" 
+      download 
+      class="inline-block px-8 py-4 bg-gradient-to-r from-purple-700 to-indigo-700 text-white font-bold text-lg rounded-lg shadow-md hover:scale-105 hover:shadow-lg transition-transform"
+    >
+      Download Registration Form
+    </a>
+
+    <!-- Decorative Horizontal Line -->
+    <div class="my-12 mx-auto h-1 w-3/4 bg-gradient-to-r from-purple-500 via-indigo-500 to-purple-500"></div>
+
+    <!-- Secondary Call-to-Action -->
+    <div class="text-lg text-gray-700">
+      <p class="mb-2">
+        Have questions or need assistance? Feel free to reach out to us anytime!
+      </p>
+      <p class="font-bold">
+        Together, we build a brighter future. ✨
+      </p>
+    </div>
+  </div>
+</section>
+
+
+ <!-- Footer -->
+<footer class="bg-indigo-900 text-white py-12">
+  <div class="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
+    <!-- About Us -->
+    <div>
+      <h2 class="font-bold text-lg">Student Innovation Center</h2>
+      <p class="mt-4 text-gray-400">
+        Your ultimate platform to host, organize, and explore incredible events.
+      </p>
+    </div>
+    <!-- Quick Links -->
+    <div>
+      <h2 class="font-bold text-lg">Quick Links</h2>
+      <ul class="mt-4 space-y-2">
+        <li><a href="#" class="hover:underline">Home</a></li>
+        <li><a href="#upcoming" class="hover:underline">Upcoming Events</a></li>
+        <li><a href="#past" class="hover:underline">Past Events</a></li>
+        <li><a href="#contacts" class="hover:underline">Contacts</a></li>
+      </ul>
+    </div>
+    <!-- Support -->
+    <div>
+      <h2 class="font-bold text-lg">Support</h2>
+      <ul class="mt-4 space-y-2">
+        <li><a href="#" class="hover:underline">Help Center</a></li>
+        <li><a href="#" class="hover:underline">FAQs</a></li>
+        <li><a href="#" class="hover:underline">Terms & Conditions</a></li>
+        <li><a href="#" class="hover:underline">Privacy Policy</a></li>
+      </ul>
+    </div>
+    <!-- Contact Us -->
+    <div>
+      <h2 class="font-bold text-lg">Contact Us</h2>
+      <p class="mt-4 text-gray-400">
+        Email: <a href="mailto:info@eventhive.com" class="underline">info@eventhive.com</a>
+      </p>
+      <p class="mt-2 text-gray-400">
+        Phone: +123 456 7890
+      </p>
+      <div class="mt-4 flex space-x-4" style="width:5rem;">
+        <a href="#" class="hover:opacity-75">
+          <img src="src/facebook.png" alt="Facebook">
+        </a>
+        <a href="#" class="hover:opacity-75">
+          <img src="src/instagram.png" alt="Twitter">
+        </a>
+        <a href="#" class="hover:opacity-75">
+          <img src="src/linkedin.png" alt="LinkedIn">
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="mt-8 text-center text-sm text-gray-400">
+    © 2024 Student Innovation Center. All rights reserved.
+  </div>
+</footer>
+</body>
 </html>

@@ -23,10 +23,13 @@ const upcomingeventSchema= new mongoose.Schema({
     club:{
         type:String,
     },
+    entryFee:{
+        type:String,
+    },
     userregister:[{
         type: mongoose.Schema.Types.ObjectId,
         ref: "userregister",
-    }
+    },
     ]
 })
 

@@ -1,449 +1,182 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Student Innovation Center</title>
-    <meta name="description" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      rel="shortcut icon"
-      href="https://sidcupfamilygolf.com/wp-content/themes/puttosaurus/favicons/favicon-32x32.png"
-      type="image/x-icon"
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style.css" />
+<html lang="en">
 
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "montserrat";
-      }
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
 
-      html,
-      body {
-        height: 100%;
-        background-color: black;
-        width: 100%;
-      }
-      *::selection {
-        background-color: #fff;
-        color: #95c11e;
-      }
+    .card img {
+      transition: transform 0.3s ease-in-out;
+    }
 
-      body::-webkit-scrollbar {
-        display: block;
-        width: 8px;
-        background: #95c11e;
-      }
-      body::-webkit-scrollbar-thumb {
-        background-color: #fff;
+    .card:hover img {
+      transform: scale(1.1);
+    }
 
-        border-radius: 50px;
-      }
-      body {
-        overflow-x: hidden;
-      }
-      #cursor {
-        height: 20px;
-        width: 20px;
-        background-color: #95c11e;
-        border-radius: 50%;
-        position: fixed;
-        z-index: 99;
-        transition: all linear 0.1s;
-      }
-      #cursor-blur {
-        height: 500px;
-        width: 500px;
-        background-color: rgba(150, 193, 30, 0.3);
-        border-radius: 50%;
-        position: fixed;
-        filter: blur(80px);
-        z-index: 9;
-        transition: all linear 0.4s;
-      }
-      #nav {
-        height: 130px;
-        width: 100%;
-        background-color: black;
-        display: flex;
-        align-items: center;
-        padding: 0 120px;
-        gap: 50px;
-        justify-content: flex-start;
-        z-index: 999;
-        color: white;
-      }
-      #nav img {
-        height: 4.5vw;
-      }
-      #nav a {
-        text-decoration: none;
-        color: white;
-      }
-      #nav h4 {
-        text-transform: uppercase;
-        font-weight: 500;
-        cursor: pointer;
-        font-size: 1.15vw;
-      }
-      .link {
-        display: flex;
-        gap: 26px;
-        padding-left: 15%;
-      }
-      .link a {
-        text-align: center;
-      }
+    .circle-image {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #6366f1;
+    }
 
-      #footer {
-        height: 40vh;
-        width: 100%;
-        background: linear-gradient(to left bottom, #119f3a 0%, #a3d421 80%);
-        position: relative;
+    
+  
+        /* Responsive design adjustments */
+        @media (max-width: 768px) {
+          .header {
+            padding: 10px 4px;
+            position:static;
+          }
+          .header nav {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            text-align:right
+          }
+          .header nav a, .header nav button {
+            font-size: 14px;
+            text-align:right;
+          }
+        }
+          
+  </style>
+</head>
 
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        gap: 6.5vw;
-        padding: 0 100px;
-        margin-top: 5%;
-      }
-      #footer > img {
-        position: absolute;
-        left: 0;
-        height: 100%;
-        z-index: 0;
-      }
-      #f1 img {
-        height: 100px;
-      }
-      #f1,
-      #f2,
-      #f3,
-      #f4 {
-        width: fit-content;
-        position: relative;
-        z-index: 99;
-        /* background-color: red; */
-      }
-      #f2 h3 {
-        font-size: 1.6vw;
-        white-space: nowrap;
-        text-transform: uppercase;
-        color: #000;
-        font-weight: 900;
-        margin-bottom: 8px;
-      }
+<body class="bg-gray-100 font-sans leading-normal tracking-normal">
+  
+   <!-- Header -->
+  <header class="header flex justify-between items-center py-4 px-8 bg-white shadow-md  w-full top-0 z-50">
+    <div class="text-2xl font-bold text-indigo-600">Student <span class="text-black">Innovation</span> Center</div>
+    <nav class="space-x-6 text-sm">
+      <a href="/" class="hover:text-indigo-600">Home</a>
+      <a href="/upcomingevent" class="hover:text-indigo-600">Upcoming Events</a>
+      <a href="/pastEvent" class="hover:text-indigo-600">Past Events</a>
+      <a href="/profile" class="hover:text-indigo-600">Profile</a>
+      <a href="/contact" class="hover:text-indigo-600">Contacts</a>
+      <a href="/admin" class="hover:text-indigo-600">Admin</a>
+      <% if(admi){ %>
+        <a href="/logout" class="px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700">Logout</a>
+      <% } else { %>
+      <a href="/login" class="px-4 py-2 text-purple-600 hover:underline">Login</a>
+      <a href="/signup" class="px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700">Signup</a>
+    <% } %>
+    </nav>
+  </header>
+  
 
-      #f3 h3 {
-        font-size: 1.6vw;
-        white-space: nowrap;
-        text-transform: uppercase;
-        color: #000;
-        font-weight: 800;
-        margin-bottom: 8px;
-      }
-      #f4 h4 {
-        font-size: 1vw;
-        white-space: nowrap;
-        text-transform: uppercase;
-        color: #000;
-        font-weight: 600;
-        line-height: 20px;
-        margin-bottom: 8px;
-      }
 
-      .page1 {
-        height: 50%;
-        width: 100%;
-        background-image: url(https://img.freepik.com/free-vector/paper-style-dynamic-lines-background_23-2149008629.jpg?size=626&ext=jpg&ga=GA1.1.1900459002.1723965687&semt=ais_hybrid);
-        background-size: cover;
-        background-repeat: no-repeat;
-      }
-
-      .page1 h1 {
-        text-align: center;
-        font-size: 5rem;
-        position: relative;
-        top: 27%;
-        color: white;
-      }
-
-      .page2 {
-        height: auto;
-        width: 100%;
-      }
-      .page2 h1 {
-        text-align: center;
-        font-size: 6rem;
-        align-items: center;
-        color: white;
-        margin-top: 2%;
-      }
-      .page2 .container {
-        display: flex;
-        justify-content: space-around;
-        margin-top: 3%;
-        flex: 3;
-      }
-      .page2 .container .card {
-        height: 100%;
-        width: 20%;
-        border-radius: 20px;
-        background-color: transparent;
-        border: solid 2px grey;
-        margin: 20px;
-        flex-wrap: wrap;
-      }
-
-      .page2 .container .card img {
-        height: 65%;
-        width: 90%;
-        background-size: cover;
-        background-repeat: no-repeat;
-        border-radius: 50%;
-        border: 1px solid grey;
-        margin: 5%;
-      }
-      .page2 .container .card .text {
-        padding: 10px;
-        text-align: center;
-        background-color: white;
-        border-radius: 20px;
-      }
-
-      .card:hover {
-        box-shadow: -5px 5px 9px #5a5a5a, 5px -5px 9px #ffffff;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="nav">
-      <img src="btch.jpg" alt="" />
-      <a href="/">HOME</a>
-      <a href="/pastEvent">PAST EVENT</a>
-      <a href="/upcomingevent">UPCOMING EVENT</a>
-      <a href="/profile">PROFILE</a>
-      <a href="/admin">ADMIN</a>
-      <a href="#">CONTACTS</a>
-      <div class="link">
-        <% if(!currUser){ %>
-        <a href="/signup">SIGNUP</a>
-        <a href="/login">LOGIN</a>
-        <% } else {%>
-        <a href="/logout">LOGOUT</a>
-        <% } %>
-      </div>
+  <section class="bg-indigo-600 text-white py-8">
+    <div class="container mx-auto text-center">
+      <h1 class="text-5xl font-extrabold">Contact Our Team</h1>
+      <p class="text-lg mt-4">Feel free to get in touch with our coordinators for any assistance or queries!</p>
     </div>
+</section>
 
-    <div class="page1">
-      <h1>ASANSOL ENGINEERING COLLEGE</h1>
-      <h1>STUDENT INNOVATION CENTER</h1>
-    </div>
-
-    <div class="page2">
-      <h1>Contact Us</h1>
-      <div class="container">
-        <div class="card">
-          <img src="/src/aqdas_.jpg" alt="img" />
-          <div class="text">
-            <b>Aqdas Sultan</b>
-            <p>Co-Convener,SIC</p>
-            <p>5th Semester,ECE</p>
-            <i>Asansol Engineering College </i>
-            <p>Contact No.:+91 81709 48166</p>
-          </div>
+  <!-- Coordinator Cards Section -->
+  <section class="py-12">
+    <div class="container mx-auto px-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+        <!-- Coordinator Card -->
+        <div class="card bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden transition transform duration-300 p-6 text-center">
+          <img src="src/faiz.jpg" alt="Coordinator Image" class="circle-image mx-auto mb-4">
+          <h2 class="text-2xl font-semibold text-indigo-600 mb-2">Faiz Hussain</h2>
+          <p class="text-gray-700 mb-1"><strong>Department:</strong> Electronics and Communication Engineering</p>
+          <p class="text-gray-700 mb-1"><strong>Batch:</strong> 2022-2026</p>
+          <p class="text-gray-700 mb-1"><strong>Position:</strong> Student Coordinator, I.E.I</p>
+          <p class="text-gray-700 mb-3"><strong>Contact:</strong> +918581088590</p>
+          <p class="text-gray-700 mb-3">Developer of this website.<span class="text-indigo-400"><a href="https://www.linkedin.com/in/faiz-hussain-257001250/">Visit Linkedin</a></span></p>
+          <button class="bg-indigo-600 text-white py-2 px-5 rounded-lg hover:bg-indigo-700 transition duration-300">Call Now</button>
         </div>
 
-        <div class="card">
-          <img src="/src/sourav.jpg" alt="img" />
-          <div class="text">
-            <b>Sourav Bhattacharya</b>
-            <p>Convener,SIC</p>
-            <p>7th Semester,ECE</p>
-            <i>Asansol Engineering College </i>
-            <p>Contact No.:+91 85976 87697</p>
-          </div>
+        <!-- Another Coordinator Card -->
+        <div class="card bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden transition transform duration-300 p-6 text-center">
+          <img src="src/apoorv.jpg" alt="Coordinator Image" class="circle-image mx-auto mb-4">
+          <h2 class="text-2xl font-semibold text-indigo-600 mb-2">Apoorva Pandit</h2>
+          <p class="text-gray-700 mb-1"><strong>Department:</strong> Electronics and Communication Engineering</p>
+          <p class="text-gray-700 mb-1"><strong>Batch:</strong> 2022-2026</p>
+          <p class="text-gray-700 mb-1"><strong>Position:</strong> Student Coordinator, I.E.I</p>
+          <p class="text-gray-700 mb-3"><strong>Contact:</strong> +916892344561</p>
+          <button class="bg-indigo-600 text-white py-2 px-5 rounded-lg hover:bg-indigo-700 transition duration-300">Call Now</button>
         </div>
 
-        <div class="card">
-          <img src="/src/sana.jpg" alt="img" />
-          <div class="text">
-            <b>Sana Shams</b>
-            <p>Convener,I.E.(I)</p>
-            <p>7th Semester,ECE</p>
-            <i>Asansol Engineering College </i>
-            <p>Contact No.:+91 87681 32142</p>
-          </div>
+        <!-- More Cards -->
+        <div class="card bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden transition transform duration-300 p-6 text-center">
+          <img src="src/aqdas_.jpg" alt="Coordinator Image" class="circle-image mx-auto mb-4">
+          <h2 class="text-2xl font-semibold text-indigo-600 mb-2">Aqdas Sultan</h2>
+          <p class="text-gray-700 mb-1"><strong>Department:</strong> Electronics and Communication Engineering</p>
+          <p class="text-gray-700 mb-1"><strong>Batch:</strong> 2022-2026</p>
+          <p class="text-gray-700 mb-1"><strong>Position:</strong> Co-convener, SIC</p>
+          <p class="text-gray-700 mb-3"><strong>Contact:</strong> +9189966773421</p>
+          <button class="bg-indigo-600 text-white py-2 px-5 rounded-lg hover:bg-indigo-700 transition duration-300">Call Now</button>
         </div>
-
-        <div class="card">
-          <img src="/src/rounak.jpg" alt="img" />
-          <div class="text">
-            <b>Rounak Gupta</b>
-            <p>Co-Convener,I.E.(I)</p>
-            <p>7th Semester,ECE</p>
-            <i>Asansol Engineering College </i>
-            <p>Contact No.:+91 70476 22832</p>
-          </div>
-        </div>
-      </div>
-      <div class="container">
-        <div class="card">
-       
-          <img src="/src/faiz.jpg" alt="img">    
-          <div class="text"> 
-              <b>Faiz Hussain</b>
-              <p>Student Co-ordinator,I.E.(I)</p>
-              <p>5th Semester,ECE</p>
-              <i>Asansol Engineering College </i> 
-              <p>Contact No.:+918581088590</p>    
-          </div>    
-          </div>
-
-          <div class="card">
-       
-            <img src="/src/apoorv.jpg" alt="img">    
-            <div class="text"> 
-                <b>Apoorva Pandit</b>
-                <p>Student Co-ordinator,I.E.(I)</p>
-                <p>5th Semester,ECE</p>
-                <i>Asansol Engineering College </i> 
-                <p>Contact No.:+91 70013 69436</p>    
-            </div>    
-            </div>
-
-            <div class="card">
-       
-              <img src="/src/abhishek.jpg" alt="img">    
-              <div class="text"> 
-                  <b>Abhishek Ranjan Sinha</b>
-                  <p>Student Co-ordinator,I.E.(I)</p>
-                  <p>5th Semester,ECE</p>
-                  <i>Asansol Engineering College </i> 
-                  <p>Contact No.:+91 76795 12814</p>    
-              </div>    
-              </div>
-
-              <div class="card">
-       
-                <img src="/src/sup.jpg" alt="img">    
-                <div class="text"> 
-                    <b>Supriya Yadav</b>
-                    <p>Student Co-ordinator,I.E.(I)</p>
-                    <p>5th Semester,ECE</p>
-                    <i>Asansol Engineering College </i> 
-                    <p>Contact No.:+91 81164 68071</p>    
-                </div>    
-                </div>
-
-        
-      </div>
-      <div class="container">
-        <div class="card">
-       
-          <img src="/src/anirudh.jpg" alt="img">    
-          <div class="text"> 
-              <b>Aniruddha Hazra</b>
-              <p>Student Co-ordinator,I.E.(I)</p>
-              <p>7th Semester,ECE</p>
-              <i>Asansol Engineering College </i> 
-              <p>Contact No.:+918340129962</p>    
-          </div>    
-          </div>
-        
-          <div class="card">
-       
-            <img src="/src/sarthak.jpg" alt="img">    
-            <div class="text"> 
-                <b>Sarthak Mondal</b>
-                <p>Student Co-ordinator,I.E.(I)</p>
-                <p>7th Semester,ECE</p>
-                <i>Asansol Engineering College </i> 
-                <p>Contact No.:+918250318077</p>    
-            </div>    
-            </div>
-        
-            <div class="card">
-       
-              <img src="/src/pooja.jpg" alt="img">    
-              <div class="text"> 
-                  <b>Pooja Yadav</b>
-                  <p>Student Co-ordinator,SIC</p>
-                  <p>5th Semester,ECE</p>
-                  <i>Asansol Engineering College </i> 
-                  <p>Contact No.:+91 98320 26734</p>    
-              </div>    
-              </div>
-            
       </div>
     </div>
-
-    <div id="footer">
-      <div id="cursor"></div>
-      <div id="cursor-blur"></div>
-
-      <img
-        src="https://eiwgew27fhz.exactdn.com/wp-content/themes/puttosaurus/img/dots-footer.svg"
-        alt=""
-      />
-      <div id="f1">
-      </div>
-      <div id="f2">
-        <h3>I.E.(I)</h3>
-        <h3>SIC</h3>
-        <h3>About us</h3>
-      </div>
-      <div id="f3">
-        <h3>Electronics Components</h3>
-        <h3>Events</h3>
-        <h3>Contact us</h3>
-      </div>
-      <div id="f4">
-        <h4>
-          Student Innovation Centre , <br />
-          D-block,ECE Department , <br />
-          Asansol Engineering College<br />
-          GMAIL:princeiit423@gmail.com <br />
-          GET DIRECTIONS <br />
-        </h4>
-        <br />
-        <i style="color: #000"
-          >Contact Developer <br />
-          <a
-            style="text-decoration: none; color: #000"
-            href="www.linkedin.com/in/
-        faiz-hussain-257001250/
-        "
-            >LinkedIn</a
-          >
-          <br />
-          <a style="text-decoration: none; color: #000"
-            >Email:faiz18513@gmail.com</a
-          >
-        </i>
+  </section>
+ <!-- Footer -->
+ <footer class="bg-indigo-900 text-white py-12">
+  <div class="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
+    <!-- About Us -->
+    <div>
+      <h2 class="font-bold text-lg">Student Innovation Center</h2>
+      <p class="mt-4 text-gray-400">
+        Your ultimate platform to host, organize, and explore incredible events.
+      </p>
+    </div>
+    <!-- Quick Links -->
+    <div>
+      <h2 class="font-bold text-lg">Quick Links</h2>
+      <ul class="mt-4 space-y-2">
+        <li><a href="#" class="hover:underline">Home</a></li>
+        <li><a href="#upcoming" class="hover:underline">Upcoming Events</a></li>
+        <li><a href="#past" class="hover:underline">Past Events</a></li>
+        <li><a href="#contacts" class="hover:underline">Contacts</a></li>
+      </ul>
+    </div>
+    <!-- Support -->
+    <div>
+      <h2 class="font-bold text-lg">Support</h2>
+      <ul class="mt-4 space-y-2">
+        <li><a href="#" class="hover:underline">Help Center</a></li>
+        <li><a href="#" class="hover:underline">FAQs</a></li>
+        <li><a href="#" class="hover:underline">Terms & Conditions</a></li>
+        <li><a href="#" class="hover:underline">Privacy Policy</a></li>
+      </ul>
+    </div>
+    <!-- Contact Us -->
+    <div>
+      <h2 class="font-bold text-lg">Contact Us</h2>
+      <p class="mt-4 text-gray-400">
+        Email: <a href="mailto:info@eventhive.com" class="underline">info@eventhive.com</a>
+      </p>
+      <p class="mt-2 text-gray-400">
+        Phone: +123 456 7890
+      </p>
+      <div class="mt-4 flex space-x-4" style="width:5rem;">
+        <a href="#" class="hover:opacity-75">
+          <img src="src/facebook.png" alt="Facebook">
+        </a>
+        <a href="#" class="hover:opacity-75">
+          <img src="src/instagram.png" alt="Twitter">
+        </a>
+        <a href="#" class="hover:opacity-75">
+          <img src="src/linkedin.png" alt="LinkedIn">
+        </a>
       </div>
     </div>
+  </div>
+  <div class="mt-8 text-center text-sm text-gray-400">
+    © 2024 Student Innovation Center. All rights reserved.
+  </div>
+</footer>
+</body>
 
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.1/gsap.min.js"
-      integrity="sha512-qF6akR/fsZAB4Co1QDDnUXWnaQseLGXoniuSuSlPQK6+aWhlMZcHzkasCSlnWoe+TJuudlka1/IQ01Dnhgq95g=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.1/ScrollTrigger.min.js"
-      integrity="sha512-IHDCHrefnBT3vOCsvdkMvJF/MCPz/nBauQLzJkupa4Gn4tYg5a6VGyzIrjo6QAUy3We5HFOZUlkUpP0dkgE60A=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
-    <script src="script.js"></script>
-  </body>
 </html>

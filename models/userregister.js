@@ -10,9 +10,17 @@ const userregisterSchema= new mongoose.Schema({
                 type:String,
                 required:true,
         },
+        image:{
+                url: String,
+                filename:String,    
+            },
+        txn:{
+                type:String,
+        },    
         department:String,
         roll:Number,
         semester:Number,
+        whatsapp:Number,
         date:{
                 type: Date,
 		default: Date.now,

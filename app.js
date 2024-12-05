@@ -11,6 +11,7 @@ const localStrategy = require("passport-local");
 const User = require("./models/user.js");
 const Event = require("./models/event.js");
 const upcomingevent = require("./models/upcomingevent.js");
+const Attendance= require("./models/attendance.js");
 const userregister= require("./models/userregister.js");
 const winner= require("./models/winner.js");
 const component=require("./models/components.js");
@@ -19,6 +20,11 @@ const MongoStore = require('connect-mongo');
 const sendmail= require("./sendmail_middleware.js");
 const isAdmin = require("./isAdmin_middleware.js");
 const methodOverride= require("method-override");
+
+const multer = require("multer");
+const { storage } = require("./cloudConfig.js");
+
+const upload = multer({ storage });
 
 require("dotenv").config();
 const port = process.env.PORT||4000;
@@ -77,12 +83,13 @@ app.use((req, res, next) => {
   next()
 })
 
-app.get("/", async (req, res,next) => {
+app.get("/",async(req, res,next) => {
   try {
-    const user= req.user ||null;
-    
+    const admi= req.user ||null;
+  
+    const events = await upcomingevent.find().sort({_id:-1}).limit(6);
   const winners = await winner.find().sort({_id:-1}).limit(1);
-  res.render("home/home1.ejs",{user,winners});
+  res.render("home/home1.ejs",{admi,winners,events});
   } catch (err) {
     next(err);
   }
@@ -94,7 +101,8 @@ app.get("/", async (req, res,next) => {
 // signup login logout route
 
 app.get("/signup", (req, res) => {
-  res.render("signup/signup1.ejs");
+  const admi= req.user ||null;
+  res.render("signup/signup1.ejs",{admi});
 });
 
 
@@ -120,9 +128,11 @@ app.post("/signup", async (req, res, next) => {
 
     const registerUser = await User.register(newUser, password);
     await registerUser.save();
-
+  
     const winners = await winner.find().sort({ _id: -1 }).limit(1);
-    res.render("home/home1.ejs", { winners });
+    const events = await upcomingevent.find().sort({_id:-1}).limit(6);
+    const admi= req.user ||null;
+    res.render("home/home1.ejs", { winners,admi,events });
 
   } catch (err) {
     
@@ -144,7 +154,8 @@ app.get("/signup/:id", async (req, res,next) => {
 });
 
 app.get("/login", (req,res)=>{
-  res.render("login/login1.ejs");
+  const admi= req.user ||null;
+  res.render("login/login1.ejs",{admi});
 })
 
 app.post(
@@ -153,7 +164,9 @@ app.post(
   async (req, res) => {
       try {
         const winners = await winner.find().sort({_id:-1}).limit(1);
-        res.render("home/home1.ejs",{winners});
+        const events = await upcomingevent.find().sort({_id:-1}).limit(6);
+        const admi= req.user ||null;
+        res.render("home/home1.ejs",{winners,admi,events});
       } catch (err) {
         next(err);
       }
@@ -168,7 +181,9 @@ app.get("/logout", (req, res, next) => {
       return next(err);
     } else {
       const winners = await winner.find().sort({_id:-1}).limit(1);
-      return res.render("home/home1.ejs",{winners});
+      const events = await upcomingevent.find().sort({_id:-1}).limit(6);
+      const admi= req.user ||null;
+      return res.render("home/home1.ejs",{winners,admi,events});
     }
   });
 });
@@ -178,7 +193,8 @@ app.get("/logout", (req, res, next) => {
 app.get("/pastEvent", isLoggedIn, async (req, res,next) => {
   try {
     const allEvent = await Event.find().sort({_id:-1});
-    res.render("pastevent/pastevent.ejs", { allEvent });
+    const admi= req.user ||null;
+    res.render("pastevent/pastevent.ejs", { allEvent,admi });
   } catch (err) {
     next(err);
   }
@@ -187,8 +203,9 @@ app.get("/pastEvent/:id",isLoggedIn, async(req,res,next)=>{
   try {
     const id = req.params.id;
   const username=req.user.username;
-  const pastEvent=await Event.findById(id);
-  res.render("showpastevent/showpastevent.ejs", {pastEvent,username});
+  const singleEvent=await Event.findById(id);
+  const admi= req.user ||null;
+  res.render("showpastevent/showpastevent.ejs", {singleEvent,username,admi});
   } catch (err) {
     next(err);
   }
@@ -203,8 +220,13 @@ app.delete("/pastEvent/:id", async(req,res,next)=>{
   }
 })
 
-app.get("/admin/pasteventform", (req,res)=>{
-  res.render("addpastevent/addpastevent.ejs");
+app.get("/admin/pasteventform", (req,res,next)=>{
+  try {
+    const admi=req.user||null;
+    res.render("addpastevent/addpastevent.ejs",{admi});
+  } catch (err) {
+    next(err);
+  }
 })
 
 app.post("/addpastevent",isLoggedIn,isAdmin, async(req,res,next)=>{
@@ -218,13 +240,18 @@ app.post("/addpastevent",isLoggedIn,isAdmin, async(req,res,next)=>{
   }
 })
 
-app.get("/addevent",isLoggedIn,isAdmin,(req, res) => {
-  res.render("addevent/addevent.ejs");
+app.get("/addevent",isLoggedIn,isAdmin,(req, res,next) => {
+  try {
+    const admi=req.user||null;
+    res.render("addevent/addevent.ejs",{admi});
+  } catch (err) {
+    next(err);
+  }
 });
 
 app.post("/addevent",isAdmin, async (req, res,next) => {
   try {
-    const { title, description, posterUrl, dateOfEvent, location, club } =
+    const { title, description, posterUrl, dateOfEvent, location, club,entryFee } =
     req.body;
   const newEvent = new upcomingevent({
     title,
@@ -233,6 +260,7 @@ app.post("/addevent",isAdmin, async (req, res,next) => {
     dateOfEvent,
     location,
     club,
+    entryFee,
   });
   await newEvent.save();
   res.redirect("/admin");
@@ -245,7 +273,8 @@ app.post("/addevent",isAdmin, async (req, res,next) => {
 app.get("/upcomingevent",isLoggedIn, async (req, res,next) => {
     try {
       const allupcomingEvent = await upcomingevent.find().sort({_id:-1});
-      res.render("upcomingevent/upcomingevent.ejs", { allupcomingEvent });
+      const admi= req.user ||null;
+      res.render("upcomingevent/upcomingevent.ejs", { allupcomingEvent,admi });
     } catch (err) {
       next(err);
     }
@@ -256,7 +285,9 @@ app.get("/upcomingevent/:id",isLoggedIn, async(req,res,next)=>{
         const id= req.params.id;
         const username= req.user.username;
         const singleEvent=await upcomingevent.findById(id);
-        res.render("showevent/showevent.ejs",{singleEvent,username});
+        const fee=singleEvent.entryFee;
+        const admi= req.user ||null;
+        res.render("showevent/showevent.ejs",{singleEvent,username,admi,fee});
       } catch (err) {
         next(err);
       }
@@ -276,34 +307,89 @@ app.delete("/upcomingevent/:id", async(req,res,next)=>{
 app.get("/upcomingevent/:id/register", isLoggedIn,async(req,res,next)=>{
   try {
     const id = req.params.id;
+    const admi= req.user||null;
     const singleEvent= await upcomingevent.findById(id);
-    res.render("eventregistration/eventregistration.ejs",{singleEvent});
+    res.render("eventregistration/eventregistration.ejs",{singleEvent,admi});
   } catch (err) {
       next(err);
   }
 })
 
-app.post("/upcomingevent/:id/register",isLoggedIn, async(req,res,next)=>{
+app.get("/upcomingevent/:id/register-free", isLoggedIn,async(req,res,next)=>{
   try {
     const id = req.params.id;
+    const admi= req.user||null;
+    const singleEvent= await upcomingevent.findById(id);
+    res.render("eventregistration/eventregistration-free.ejs",{singleEvent,admi});
+  } catch (err) {
+      next(err);
+  }
+})
+
+app.post("/upcomingevent/:id/register",isLoggedIn,upload.single('image'), async(req,res,next)=>{
+  try {
+    const txnId= await userregister.findOne({txn:req.body.txn});
+    if(txnId){
+      return res.status(400).send("Transaction Id is already used, please check once");
+    }
+
+    const url = req.file.path;
+    const filename = req.file.filename;
+
+    const id = req.params.id;
   const singleEvent= await upcomingevent.findById(id);
-  const {name,department,roll,semester,email}= req.body;
-  const newregister= await new userregister({name,department,roll,semester,email});
+
+  const admi= req.user||null;
+  const {name,department,roll,semester,email,txn,whatsapp}= req.body;
+  const newregister= await new userregister({name,department,roll,semester,email,txn,whatsapp});
+  newregister.image = { url, filename };
   singleEvent.userregister.push(newregister);
+  const userId= req.user._id;
+  const user= await User.findById(userId);
+  user.event.push(singleEvent);
+
   await newregister.save();
   await singleEvent.save();
+  await user.save();
 
-   res.render("successfull/success.ejs",{newregister , singleEvent});
+   res.render("successfull/success.ejs",{newregister , singleEvent,admi});
    next();
   } catch (err) {
     next(err);
   }
 })
 
+app.post("/upcomingevent/:id/register-free",isLoggedIn, async(req,res,next)=>{
+  try {
+    
+    const id = req.params.id;
+  const singleEvent= await upcomingevent.findById(id);
+
+  const admi= req.user||null;
+  const {name,department,roll,semester,email,whatsapp}= req.body;
+  const newregister= await new userregister({name,department,roll,semester,email,whatsapp});
+  singleEvent.userregister.push(newregister);
+  const userId= req.user._id;
+  const user= await User.findById(userId);
+  user.event.push(singleEvent);
+
+  await newregister.save();
+  await singleEvent.save();
+  await user.save();
+
+   res.render("successfull/success.ejs",{newregister , singleEvent,admi});
+   next();
+  } catch (err) {
+    next(err);
+  }
+})
+
+
 app.get("/upcomingevent/:id/participation", isLoggedIn,isAdmin, async(req,res,next)=>{
  try {
   const id= req.params.id;
   const participation=await upcomingevent.findById(id).populate("userregister");
+  participation.userregister.sort((a, b) => b.date - a.date);
   res.render("participation/participation.ejs",{participation});
  } catch (err) {
     next(err);
@@ -311,13 +397,29 @@ app.get("/upcomingevent/:id/participation", isLoggedIn,isAdmin, async(req,res,ne
 })
 
 
-app.get("/admin",isLoggedIn,isAdmin,(req,res)=>{
-    res.render("admin/admin.ejs");
+app.get("/admin",isLoggedIn,isAdmin,async(req,res,next)=>{
+    try {
+      const totalUsers=await User.countDocuments();
+      const totalEvents=await upcomingevent.countDocuments();
+      const totalComponents=await component.countDocuments();
+      const totalPastEvents=await Event.countDocuments();
+      const totalECEian= await winner.countDocuments();
+      const finalEvents= totalEvents + totalPastEvents;
+      const totalVisit= await Attendance.countDocuments();
+      res.render("admin/admin.ejs",{totalUsers,totalEvents,totalComponents,totalPastEvents,totalECEian,finalEvents,totalVisit});
+    } catch (err) {
+      next(err);
+    }
   }
 )
 
-app.get("/admin/winner",isLoggedIn,isAdmin,(req,res)=>{
-  res.render("addeceian/addeceian.ejs");
+app.get("/admin/winner",isLoggedIn,isAdmin,(req,res,next)=>{
+  try {
+    const admi= req.user||null;
+    res.render("addeceian/addeceian.ejs",{admi});
+  } catch (err) {
+    next(err);
+  }
 })
 app.post("/admin/winner",isLoggedIn,isAdmin, async(req,res,next)=>{
   try {
@@ -328,11 +430,43 @@ app.post("/admin/winner",isLoggedIn,isAdmin, async(req,res,next)=>{
   } catch (err) {
     next(err);
   }
-})
+});
+
+app.get("/admin/attendance",isLoggedIn,isAdmin,(req,res,next)=>{
+   try {
+    const admi= req.user ||null;
+    res.render("attendance/attendance.ejs",{admi});
+   } catch (err) {
+    next(err)
+   }
+});
+
+app.post("/save",isLoggedIn,isAdmin,async(req,res,next)=>{
+  try {
+    const{name,department,entryTime,exitTime,purposeOfVisiting}= req.body;
+    const addEntry= new Attendance({name,department,entryTime,exitTime,purposeOfVisiting});
+    await addEntry.save();
+    const admi= req.user ||null;
+    res.render("attendance/attendance.ejs",{admi});
+  } catch (err) {
+    next(err)
+  }
+});
+
+app.get("/records",isLoggedIn,isAdmin,async(req,res,next)=>{
+  try {
+    const admi= req.user ||null;
+    const attendanceRecords = await Attendance.find().sort({ date: -1 }); // Sort by date in descending order
+    res.render('records/records.ejs', { attendanceRecords,admi });
+  } catch (err) {
+    next(err)
+  }
+});
 app.get("/winner", async(req,res,next)=>{
  try {
+  const admi= req.user ||null;
   const winners = await winner.find().sort({_id:-1});
-  res.render("eceian/ecian.ejs", {winners});
+  res.render("eceian/ecian.ejs", {winners,admi});
  } catch (err) {
     next(err);
  }
@@ -340,7 +474,9 @@ app.get("/winner", async(req,res,next)=>{
 
 app.get("/profile",isLoggedIn, async(req,res)=>{
   const user= req.user;
-  res.render("profile/profile.ejs",{user});
+  const data = await User.findById(req.user._id).populate("event");
+  const admi= req.user ||null;
+  res.render("profile/profile.ejs",{user,admi,data});
 })
 
 app.get("/admin/addcomponent",isLoggedIn,isAdmin,(req,res)=>{
@@ -366,8 +502,13 @@ app.get("/listofcomponent",async(req,res,next)=>{
   }
   
 })
-app.get("/contact",(req,res)=>{
-  res.render("contact/contact.ejs");
+app.get("/contact",(req,res,next)=>{
+  try {
+    const admi = req.user||null
+    res.render("contact/contact.ejs",{admi});
+  } catch (err) {
+    next(err);
+  }
 })
 
 

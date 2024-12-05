@@ -1,173 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Innovation Center</title>
-
-    <style>
-
-        *{
-            margin: 0%;
-            padding: 0%;
-            box-sizing: border-box;
-            
-        }
-        html,body{
-            height: 100%;
-            width: 100%;
-            background-color: black;
-        }
-        
-#nav {
-    height: 130px;
-    width: 100%;
-    background-color: black;
-    display: flex;
-    align-items: center;
-    padding: 0 120px;
-    gap: 50px;
-    position: fixed;
-    justify-content: flex-start;
-    z-index: 999;
-    color: white;
-  }
-  #nav img {
-    height: 4.5vw;
-  }
-  #nav a{
-    text-decoration: none;
-    color: white;
-  }
-  #nav h4 {
-    text-transform: uppercase;
-    font-weight: 500;
-    cursor: pointer;
-    font-size: 1.15vw;
-  }
-  .link{
-    display: flex;
-    gap: 26px;
-    padding-left: 15%;
-  }
-  .link a{
-    text-align: center;
-  }
-
-
-
-        .container{
-            position: relative;
-            top: 20%;
-            left: 15%;
-            height: 70%;
-            width: 70%;
-            border-radius: 5%;
-            background-color: #D1E9F6;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background-image: url(https://coolbackgrounds.io/images/backgrounds/index/disco-dba865f1.png);
-            background-size: cover;
-            background-repeat: no-repeat;
-        }
-    button {
-  --color: #560bad;
-  font-family: inherit;
-  display: inline-block;
-  width: 8em;
-  height: 2.6em;
-  line-height: 2.5em;
-  margin: 21px;
-  position: relative;
-  cursor: pointer;
-  overflow: hidden;
-  border: 2px solid var(--color);
-  transition: color 0.5s;
-  z-index: 1;
-  font-size: 17px;
-  border-radius: 6px;
-  font-weight: 500;
-  color: var(--color);
-}
-
-button:before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  background: var(--color);
-  height: 150px;
-  width: 200px;
-  border-radius: 50%;
-}
-
-button:hover {
-  color: #fff;
-}
-
-button:before {
-  top: 100%;
-  left: 100%;
-  transition: all 0.7s;
-}
-
-button:hover:before {
-  top: -30px;
-  left: -30px;
-}
-
-button:active:before {
-  background: #3a0ca3;
-  transition: background 0s;
-}
-
-    </style>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    .sidebar {
+      background: linear-gradient(to bottom right, #1E293B, #0F172A);
+      color: #FFF;
+    }
+    .sidebar-widget {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      padding: 16px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .sidebar-widget:hover {
+      transform: scale(1.05);
+      box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.4);
+    }
+    .main-content {
+      background-color: #F9FAFB;
+    }
+    .card {
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+    }
+  </style>
 </head>
-<body>
-  <div id="nav">
-    <img src="btch.jpg" alt="" />
-    <a href="/">HOME</a>
-    <a href="/pastEvent">PAST EVENT</a>
-    <a href="/upcomingevent">UPCOMING EVENT</a>
-    <a href="/profile">PROFILE</a>
-    <a href="/admin">ADMIN</a>
-    <a href="#">CONTACTS</a>
-    <div class="link">
-      <% if(!currUser){ %>
-        <a href="/signup">SIGNUP</a>
-        <a href="/login">LOGIN</a>
-        <% } else {%>
-        <a href="/logout">LOGOUT</a>
-        <% } %> 
+<body class="min-h-screen flex">
+
+  <!-- Sidebar -->
+  <aside class="sidebar w-1/4 p-6 space-y-8">
+    <!-- Welcome Widget -->
+    <div class="sidebar-widget">
+      <h2 class="text-2xl font-semibold mb-2">Hello, Admin!</h2>
+      <p class="text-sm text-gray-300">Manage your platform effortlessly with these premium tools.</p>
     </div>
-  </div>
 
+    <!-- Stats Widget -->
+    <div class="sidebar-widget">
+      <h3 class="text-xl font-semibold mb-2">Quick Stats</h3>
+      <ul class="text-gray-300 text-sm space-y-1">
+        <li>Upcoming Events: <span class="font-bold text-indigo-400"><%=totalEvents%></span></li>
+        <li>Past Events: <span class="font-bold text-indigo-400"><%=totalPastEvents%></span></li>
+        <li>Total Events: <span class="font-bold text-indigo-400"><%=finalEvents%></span></li>
+        <li>Active Users: <span class="font-bold text-indigo-400"><%=totalUsers%></span></li>
+        <li>Components Added: <span class="font-bold text-indigo-400"><%=totalComponents%></span></li>
+        <li>Total ECEian of the week: <span class="font-bold text-indigo-400"><%=totalECEian%></span></li>
+        <li>Number of times visit SIC: <span class="font-bold text-indigo-400"><%=totalVisit%></span></li>
+      </ul>
+    </div>
 
-    <div class="container">
+    <!-- Motivational Quote Widget -->
+    <div class="sidebar-widget">
+      <h3 class="text-xl font-semibold mb-2">Motivation</h3>
+      <blockquote class="italic text-gray-300">"Leadership is not about being in charge. It's about taking care of those in your charge."</blockquote>
+    </div>
+
+    <!-- Shortcut Widget -->
+    <div class="sidebar-widget">
+      <h3 class="text-xl font-semibold mb-2">Quick Actions</h3>
+      <ul class="space-y-2">
+        <li>
+          <button class="w-full text-left px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">
+            Add Upcoming Event
+          </button>
+        </li>
+        <li>
+          <button class="w-full text-left px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">
+            Add Component
+          </button>
+        </li>
+        <li>
+          <button class="w-full text-left px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">
+            Add ECEian of the Week
+          </button>
+        </li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content flex-1 p-8">
+    <header class="flex justify-between items-center mb-8">
+      <h1 class="text-4xl font-bold text-gray-700">Admin Dashboard</h1>
+      <a href="/">
+        <button class="px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition">
+          Home
+        </button>
+      </a>
+      
+      <a href="/logout">
+      <button class="px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition">
+        Logout
+      </button>
+    </a>
+    </header>
+
+    <!-- Cards Section -->
+    <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Upcoming Event Card -->
+      <div class="card bg-white rounded-lg shadow-lg p-6">
+        <h3 class="text-xl font-semibold mb-4 text-indigo-600">Upcoming Events</h3>
+        <p class="text-gray-600">Manage and schedule future events to keep your community engaged.</p>
         <form method="GET" action="/upcomingevent">
-            <button>Upcomingevent</button>
-        </form>
-        <br>
+        <button class="mt-4 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition">
+          See Upcoming Event
+        </button>
+    </form>
+      </div>
 
-        <form method="get" action="/addevent">
-            <button>AddEvent</button>
-        </form>
-        <br>
-
+      <!-- Past Event Card -->
+      <div class="card bg-white rounded-lg shadow-lg p-6">
+        <h3 class="text-xl font-semibold mb-4 text-indigo-600">Past Events</h3>
+        <p class="text-gray-600">Showcase successful past events and inspire others to join!</p>
         <form method="get" action="/admin/pasteventform">
-            <button>Add PastEvent</button>
-        </form>
-        <br>
+        <button class="mt-4 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition">
+          Add Past Event
+        </button>
+    </form>
+      </div>
+
+      <!-- ECEian of the Week Card -->
+      <div class="card bg-white rounded-lg shadow-lg p-6">
+        <h3 class="text-xl font-semibold mb-4 text-indigo-600">ECEian of the Week</h3>
+        <p class="text-gray-600">Highlight outstanding contributors and their achievements.</p>
         <form method="get" action="/admin/winner">
-            <button>Add ECE-ian </button>
-        </form>
-        <br>
+        <button class="mt-4 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition">
+          Add ECEian
+        </button>
+    </form>
+      </div>
+
+      <!-- Components Card -->
+      <div class="card bg-white rounded-lg shadow-lg p-6">
+        <h3 class="text-xl font-semibold mb-4 text-indigo-600">Add Components</h3>
+        <p class="text-gray-600">Enhance functionality by adding useful components to the platform.</p>
         <form method="get" action="/admin/addcomponent">
-          <button>Add Components </button>
-      </form>
-      <br>
-    </div>
-    
+        <button class="mt-4 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition">
+          Add Component
+        </button>
+    </form>
+      </div>
+
+      <!-- Add Event Card -->
+      <div class="card bg-white rounded-lg shadow-lg p-6">
+        <h3 class="text-xl font-semibold mb-4 text-indigo-600">Add Event</h3>
+        <p class="text-gray-600">Plan, schedule, and announce new events seamlessly.</p>
+        <form method="get" action="/addevent">
+        <button class="mt-4 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition">
+          Add Event
+        </button>
+    </form>
+      </div>
+
+      
+      <!-- Add Event Card -->
+      <div class="card bg-white rounded-lg shadow-lg p-6">
+        <h3 class="text-xl font-semibold mb-4 text-indigo-600">Attendance Portal</h3>
+        <p class="text-gray-600">Take attendance to all who visit Student innovation Center.</p>
+        <form method="get" action="/admin/attendance">
+        <button class="mt-4 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition">
+          Add Attendance
+        </button>
+    </form>
+      </div>
+    </section>
+  </main>
+
 </body>
 </html>

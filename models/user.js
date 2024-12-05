@@ -14,6 +14,11 @@ const userSchema= new mongoose.Schema({
     semester:Number,
     year:Number,
     role:String,
+    event:[{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "upcomingevent",
+    },
+    ]
 
 });
 userSchema.plugin(passportLocalMongoose);
