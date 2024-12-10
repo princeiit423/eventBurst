@@ -30,7 +30,11 @@ const upcomingeventSchema= new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "userregister",
     },
-    ]
+    ],
+    reviews:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"review",
+    }]
 })
 
 const upcomingevent= mongoose.model("upcomingevent", upcomingeventSchema);

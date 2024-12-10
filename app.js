@@ -15,6 +15,7 @@ const Attendance= require("./models/attendance.js");
 const userregister= require("./models/userregister.js");
 const winner= require("./models/winner.js");
 const component=require("./models/components.js");
+const review= require("./models/review.js");
 const isLoggedIn= require("./login_middleware.js");
 const MongoStore = require('connect-mongo');
 const sendmail= require("./sendmail_middleware.js");
@@ -284,16 +285,17 @@ app.get("/upcomingevent/:id",isLoggedIn, async(req,res,next)=>{
       try {
         const id= req.params.id;
         const username= req.user.username;
-        const singleEvent=await upcomingevent.findById(id);
+        const userId= req.user._id;
+        const singleEvent=await upcomingevent.findById(id).populate({path:"reviews", populate:{path:"author"}});
         const fee=singleEvent.entryFee;
         const admi= req.user ||null;
-        res.render("showevent/showevent.ejs",{singleEvent,username,admi,fee});
+        res.render("showevent/showevent.ejs",{singleEvent,username,admi,fee,userId});
       } catch (err) {
         next(err);
       }
 })
 
-app.delete("/upcomingevent/:id", async(req,res,next)=>{
+app.delete("/upcomingevent/:id",isLoggedIn,isAdmin, async(req,res,next)=>{
   try {
     const id = req.params.id;
    await upcomingevent.findByIdAndDelete(id);
@@ -302,6 +304,34 @@ app.delete("/upcomingevent/:id", async(req,res,next)=>{
     next(err);
   }
 
+})
+
+app.post("/upcomingevent/:id/review",isLoggedIn,async (req,res,next)=>{
+  try {
+    const event= await upcomingevent.findById(req.params.id);
+    const {comment,reviews}= req.body;
+    const newReview= new review({comment,reviews});
+    newReview.author=req.user._id;
+    event.reviews.push(newReview);
+
+    await newReview.save();
+    await event.save();
+    res.redirect(`/upcomingevent/${event._id}`);
+    } catch (err) {
+    next(err);
+  }
+})
+
+app.delete("/upcomingevent/:id/reviews/:reviewId",async(req,res,next)=>{
+  try {
+    const{id,reviewId}=req.params;
+    await upcomingevent.findByIdAndUpdate(id, {$pull: {reviews: reviewId}}) 
+    await review.findByIdAndDelete(reviewId);
+    res.redirect(`/upcomingevent/${id}`);
+
+  } catch (err) {
+    next(err);
+  }
 })
 
 app.get("/upcomingevent/:id/register", isLoggedIn,async(req,res,next)=>{

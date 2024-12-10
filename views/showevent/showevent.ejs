@@ -7,6 +7,7 @@
   <link rel="icon" href="src/favion.png" type="image/x-icon">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
     
     .event-title {
@@ -41,7 +42,7 @@
    <header class="header flex justify-between items-center py-4 px-8 bg-white shadow-md  w-full top-0 z-50">
     <div class="text-2xl font-bold text-indigo-600">Student <span class="text-black">Innovation</span> Center</div>
     <nav class="space-x-6 text-sm">
-      <a href="#" class="hover:text-indigo-600">Home</a>
+      <a href="/" class="hover:text-indigo-600">Home</a>
       <a href="/upcomingevent" class="hover:text-indigo-600">Upcoming Events</a>
       <a href="/pastEvent" class="hover:text-indigo-600">Past Events</a>
       <a href="/profile" class="hover:text-indigo-600">Profile</a>
@@ -119,6 +120,7 @@
     </section>
 
     <!-- Event Rating and Comment Section -->
+     <form method="POST" action="/upcomingevent/<%=singleEvent._id %>/review">
 <section class="bg-white p-8 rounded-lg shadow-lg border border-gray-200 mb-10">
     <h2 class="text-3xl font-bold text-center mb-6 text-indigo-600">Rate and Share Your Experience</h2>
   
@@ -126,48 +128,84 @@
     <div class="mb-4">
       <p class="text-gray-700 mb-2">Rate this event:</p>
       <div class="flex justify-center">
-        <!-- Star Rating with Animation -->
-        <div class="flex space-x-2">
-          <div class="star p-4 text-3xl cursor-pointer text-gray-400 hover:text-yellow-500 transform hover:scale-125 transition-transform duration-300" data-value="1">★</div>
-          <div class="star p-4 text-3xl cursor-pointer text-gray-400 hover:text-yellow-500 transform hover:scale-125 transition-transform duration-300" data-value="2">★</div>
-          <div class="star p-4 text-3xl cursor-pointer text-gray-400 hover:text-yellow-500 transform hover:scale-125 transition-transform duration-300" data-value="3">★</div>
-          <div class="star p-4 text-3xl cursor-pointer text-gray-400 hover:text-yellow-500 transform hover:scale-125 transition-transform duration-300" data-value="4">★</div>
-          <div class="star p-4 text-3xl cursor-pointer text-gray-400 hover:text-yellow-500 transform hover:scale-125 transition-transform duration-300" data-value="5">★</div>
-        </div>
+      <!-- Star Rating with Animation -->
+<div class="flex justify-center items-center space-x-1 py-5">
+  <div class="flex space-x-1">
+    <!-- Star 1 -->
+    <input type="radio" id="reviews" name="reviews" value="1" class="hidden peer" />
+    <label for="rate1" class="text-gray-400 text-3xl cursor-pointer transition-transform transform hover:scale-125 peer-checked:text-yellow-500 peer-checked:before:block peer-checked:before:text-yellow-500">
+      ⭐
+    </label>
+
+    <!-- Star 2 -->
+    <input type="radio" id="reviews" name="reviews" value="2" class="hidden peer" />
+    <label for="rate2" class="text-gray-400 text-3xl cursor-pointer transition-transform transform hover:scale-125 peer-checked:text-yellow-500 peer-checked:before:block peer-checked:before:text-yellow-500">
+      ⭐
+    </label>
+
+    <!-- Star 3 -->
+    <input type="radio" id="reviews" name="reviews" value="3" class="hidden peer" />
+    <label for="rate3" class="text-gray-400 text-3xl cursor-pointer transition-transform transform hover:scale-125 peer-checked:text-yellow-500 peer-checked:before:block peer-checked:before:text-yellow-500">
+      ⭐
+    </label>
+
+    <!-- Star 4 -->
+    <input type="radio" id="reviews" name="reviews" value="4" class="hidden peer" />
+    <label for="rate4" class="text-gray-400 text-3xl cursor-pointer transition-transform transform hover:scale-125 peer-checked:text-yellow-500 peer-checked:before:block peer-checked:before:text-yellow-500">
+      ⭐
+    </label>
+
+    <!-- Star 5 -->
+    <input type="radio" id="reviews" name="reviews" value="5" class="hidden peer" />
+    <label for="rate5" class="text-gray-400 text-3xl cursor-pointer transition-transform transform hover:scale-125 peer-checked:text-yellow-500 peer-checked:before:block peer-checked:before:text-yellow-500">
+      ⭐
+    </label>
+  </div>
+</div>
+  
       </div>
     </div>
   
     <!-- Comment Section -->
     <div>
       <p class="text-gray-700 mb-2">Leave your comments:</p>
-      <textarea class="w-full border border-gray-300 rounded-lg p-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200" rows="4" placeholder="Share your thoughts about the event..."></textarea>
+      <textarea name="comment" id="comment" class="w-full border border-gray-300 rounded-lg p-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200" rows="4" placeholder="Share your thoughts about the event..."></textarea>
       <button class="mt-3 px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition duration-300 transform hover:translate-y-1">Submit</button>
     </div>
   </section>
+</form>
 
   <!-- User Ratings and Comments Section -->
 <section class="bg-gray-100 p-8 rounded-lg shadow-lg border border-gray-200 mb-10">
     <h2 class="text-3xl font-bold text-center mb-6 text-indigo-600">User Ratings & Comments</h2>
   
     <!-- User Comment 1 -->
+     <% for (rev of singleEvent.reviews){ %>
     <div class="flex items-start space-x-4 mb-6 p-4 bg-white rounded-lg shadow-sm">
-      <img src="https://via.placeholder.com/50" alt="User Avatar" class="w-12 h-12 rounded-full object-cover border border-gray-300">
+      <img src="https://i.postimg.cc/GpVgmWTq/10200-10-08.jpg" alt="User Avatar" class="w-12 h-12 rounded-full object-cover border border-gray-300">
       <div class="flex-1">
         <div class="flex items-center mb-2">
-          <p class="font-semibold text-gray-800">John Doe</p>
+          <p class="font-semibold text-indigo-600"><%=rev.author.username %></p>
           <div class="flex ml-2">
             <span class="text-yellow-500 text-xl">★</span>
             <span class="text-yellow-500 text-xl">★</span>
             <span class="text-yellow-500 text-xl">★</span>
             <span class="text-yellow-500 text-xl">★</span>
-            <span class="text-gray-400 text-xl">★</span>
+            <span class="text-yellow-500 text-xl">★</span>
           </div>
         </div>
-        <p class="text-gray-700">The event was well-organized and very informative. Learned a lot of valuable skills that I can apply in my projects!</p>
+        <p class="text-gray-700"><%=rev.comment%></p>
+        <% if(userId.equals(rev.author._id) || username==="iei786"){ %>
+        <form method="post" action="/upcomingevent/<%=singleEvent._id %>/reviews/<%=rev._id %>?_method=DELETE">
+        <button type="submit"><i class="fa-solid fa-trash text-red-700"></i></button>
+      </form>
+      <% } %>
       </div>
       </div>
     </div>
+    <% } %>
   </section>
+
   
   </main>
   
