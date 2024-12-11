@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Innovation Center</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style> 
+     /* Responsive design adjustments */
+     @media (max-width: 768px) {
+        .header {
+          padding: 10px 4px;
+          position:static;
+        }
+        .header nav {
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
+          text-align:right
+        }
+        .header nav a, .header nav button {
+          font-size: 14px;
+          text-align:right;
+        }
+      }
+     
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+  <!-- Header -->
+  <header class="header flex justify-between items-center py-4 px-8 bg-white shadow-md  w-full top-0 z-50">
+    <div class="text-2xl font-bold text-indigo-600">Student <span class="text-black">Innovation</span> Center</div>
+    <nav class="space-x-6 text-sm">
+      <a href="/" class="hover:text-indigo-600">Home</a>
+      <a href="/upcomingevent" class="hover:text-indigo-600">Upcoming Events</a>
+      <a href="/pastEvent" class="hover:text-indigo-600">Past Events</a>
+      <a href="/profile" class="hover:text-indigo-600">Profile</a>
+      <a href="/contact" class="hover:text-indigo-600">Contacts</a>
+      <a href="/admin" class="hover:text-indigo-600">Admin</a>
+      <% if(admi){ %>
+        <a href="/logout" class="px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700">Logout</a>
+      <% } else { %>
+      <a href="/login" class="px-4 py-2 text-purple-600 hover:underline">Login</a>
+      <a href="/signup" class="px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700">Signup</a>
+    <% } %>
+    </nav>
+  </header>
+  
+
+  <!-- Hero Section -->
+  <section class="bg-gray-100 py-16">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <h1 class="text-4xl font-extrabold text-indigo-600 mb-4">Annual General Meet 2024</h1>
+      <p class="text-lg text-gray-600">
+        "Empowering Leadership, Shaping Futures!".
+      </p>
+    </div>
+  </section>
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <!-- Left Content -->
+      <div class="space-y-6">
+        <h2 class="text-4xl font-extrabold text-gray-800">About the Event</h2>
+        <p class="text-lg text-gray-600 leading-relaxed">
+            The Annual General Meeting (AGM) is a prestigious and pivotal event in the academic calendar of our college. This meeting serves as the cornerstone for electing the new leadership team that will drive the vision and activities of these esteemed student organizations for the upcoming year.
+During the AGM, students will have the opportunity to participate in the <span class="font-semibold text-indigo-600">democratic process</span>, casting their votes to select the Coordinator, Convener, and Co-Convener. These roles are crucial in ensuring the effective organization of events, workshops, and activities that promote technical knowledge, innovation, and skill development.
+        </p>
+        <p class="text-lg text-gray-600 leading-relaxed">
+            In this democratic process, students from all years—1st to 4th—are elected as <span class="font-semibold text-indigo-600">Coordinators</span>, ensuring equal representation across batches. This structure fosters inclusivity and collaboration, empowering each year to contribute fresh ideas and diverse perspectives.
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
+          <!-- Highlights Cards -->
+          <div class="bg-white shadow-lg rounded-lg p-4 text-center">
+            <h3 class="text-2xl font-bold text-indigo-600">25+ </h3>
+            <p class="text-gray-600 text-sm">Candidates contesting</p>
+          </div>
+          <div class="bg-white shadow-lg rounded-lg p-4 text-center">
+            <h3 class="text-2xl font-bold text-indigo-600">10</h3>
+            <p class="text-gray-600 text-sm">Candidates hold position</p>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Right Image Section -->
+      <div class="space-y-6">
+        <div class="rounded-lg overflow-hidden shadow-lg">
+          <img src="https://i.postimg.cc/hGGyynNt/Whats-App-Image-2024-12-11-at-13-19-43-209385e1.jpg" alt="Event Highlights" class="w-full h-auto">
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <!-- Supporting Images -->
+          <img src="https://i.postimg.cc/yYFbWvFs/Whats-App-Image-2024-12-11-at-13-19-44-b23c05b3.jpg" alt="Event Session" class="rounded-lg shadow-md">
+          <img src="https://i.postimg.cc/Mp53mHPL/Whats-App-Image-2024-12-11-at-13-19-43-940e992e.jpg" alt="Workshop Moment" class="rounded-lg shadow-md">
+        </div>
+      </div>
+    </div>
+  
+    <!-- Feedback Section -->
+    <div class="mt-16 bg-indigo-100 py-8 px-6 rounded-lg shadow-md">
+      <h3 class="text-2xl font-bold text-center text-gray-800 mb-4">What Candidates and Voters Say</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Feedback Card 1 -->
+        <div class="bg-white rounded-lg shadow-lg p-4">
+          <p class="text-gray-600">
+            "The event was well-structured, and it felt empowering to have a voice in electing our leaders"
+          </p>
+          <h4 class="text-sm font-bold text-indigo-600 mt-4">— Gourab Rajak, Voter</h4>
+        </div>
+        <!-- Feedback Card 2 -->
+        <div class="bg-white rounded-lg shadow-lg p-4">
+          <p class="text-gray-600">
+            "The election allowed me to step out of my comfort zone and connect with my peers on a deeper level."
+          </p>
+          <h4 class="text-sm font-bold text-indigo-600 mt-4">— Aqdas Sultan, Candidate</h4>
+        </div>
+        <!-- Feedback Card 3 -->
+        <div class="bg-white rounded-lg shadow-lg p-4">
+          <p class="text-gray-600">
+            "Great effort by the organizing team to ensure fairness and transparency throughout the event!"
+          </p>
+          <h4 class="text-sm font-bold text-indigo-600 mt-4">— Shristika Kumari, Voter</h4>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+  <!-- Gallery Section -->
+  <section class="py-16 bg-gray-100">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">Event Highlights</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <img src="https://i.postimg.cc/GmdSDGQY/general.jpg" alt="Gallery Image 1" class="rounded-lg shadow-sm transition hover:scale-105">
+        <img src="https://i.postimg.cc/SQY5byRX/Whats-App-Image-2024-12-11-at-13-21-41-ae9ab372.jpg" alt="Gallery Image 2" class="rounded-lg shadow-sm transition hover:scale-105">
+        <img src="https://i.postimg.cc/15xd9LVv/Whats-App-Image-2024-12-11-at-13-19-44-1f1ab9ef.jpg" alt="Gallery Image 3" class="rounded-lg shadow-sm transition hover:scale-105">
+        <img src="https://i.postimg.cc/Y9ZsLPnq/Whats-App-Image-2024-12-11-at-13-21-40-6e457c4d.jpg" alt="Gallery Image 4" class="rounded-lg shadow-sm transition hover:scale-105">
+        <img src="https://i.postimg.cc/8cvnRb9d/Whats-App-Image-2024-12-11-at-13-19-45-04147961.jpg" alt="Gallery Image 5" class="rounded-lg shadow-sm transition hover:scale-105">
+        <img src="https://i.postimg.cc/59wwcGB5/Whats-App-Image-2024-12-11-at-13-30-49-5815285d.jpg" alt="Gallery Image 6" class="rounded-lg shadow-sm transition hover:scale-105">
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Footer -->
+  <footer class="bg-indigo-900 text-white py-12">
+    <div class="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
+      <!-- About Us -->
+      <div>
+        <h2 class="font-bold text-lg">Student Innovation Center</h2>
+        <p class="mt-4 text-gray-400">
+          Your ultimate platform to host, organize, and explore incredible events.
+        </p>
+      </div>
+      <!-- Quick Links -->
+      <div>
+        <h2 class="font-bold text-lg">Quick Links</h2>
+        <ul class="mt-4 space-y-2">
+          <li><a href="#" class="hover:underline">Home</a></li>
+          <li><a href="#upcoming" class="hover:underline">Upcoming Events</a></li>
+          <li><a href="#past" class="hover:underline">Past Events</a></li>
+          <li><a href="#contacts" class="hover:underline">Contacts</a></li>
+        </ul>
+      </div>
+      <!-- Support -->
+      <div>
+        <h2 class="font-bold text-lg">Support</h2>
+        <ul class="mt-4 space-y-2">
+          <li><a href="#" class="hover:underline">Help Center</a></li>
+          <li><a href="#" class="hover:underline">FAQs</a></li>
+          <li><a href="#" class="hover:underline">Terms & Conditions</a></li>
+          <li><a href="#" class="hover:underline">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <!-- Contact Us -->
+      <div>
+        <h2 class="font-bold text-lg">Contact Us</h2>
+        <p class="mt-4 text-gray-400">
+          Email: <a href="mailto:info@eventhive.com" class="underline">info@eventhive.com</a>
+        </p>
+        <p class="mt-2 text-gray-400">
+          Phone: +123 456 7890
+        </p>
+        <div class="mt-4 flex space-x-4" style="width:5rem;">
+          <a href="#" class="hover:opacity-75">
+            <img src="src/facebook.png" alt="Facebook">
+          </a>
+          <a href="#" class="hover:opacity-75">
+            <img src="src/instagram.png" alt="Twitter">
+          </a>
+          <a href="#" class="hover:opacity-75">
+            <img src="src/linkedin.png" alt="LinkedIn">
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="mt-8 text-center text-sm text-gray-400">
+      © 2024 Student Innovation Center. All rights reserved.
+    </div>
+  </footer>
+</body>
+</html>

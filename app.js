@@ -191,6 +191,42 @@ app.get("/logout", (req, res, next) => {
 
 //all event fetch route
 
+app.get("/featured1",(req,res,next)=>{
+  try {
+    const admi = req.user ||null ;
+    res.render("featured/featured1.ejs", {admi});
+  } catch (err) {
+    next(err);
+  }
+})
+
+app.get("/featured2",(req,res,next)=>{
+  try {
+    const admi = req.user ||null ;
+    res.render("featured/featured2.ejs", {admi});
+  } catch (err) {
+    next(err);
+  }
+})
+
+app.get("/featured3",(req,res,next)=>{
+  try {
+    const admi = req.user ||null ;
+    res.render("featured/featured3.ejs", {admi});
+  } catch (err) {
+    next(err);
+  }
+})
+
+app.get("/featured4",(req,res,next)=>{
+  try {
+    const admi = req.user ||null ;
+    res.render("featured/featured4.ejs", {admi});
+  } catch (err) {
+    next(err);
+  }
+})
+
 app.get("/pastEvent", isLoggedIn, async (req, res,next) => {
   try {
     const allEvent = await Event.find().sort({_id:-1});

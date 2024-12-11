@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Innovation Center</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style> 
+     /* Responsive design adjustments */
+     @media (max-width: 768px) {
+        .header {
+          padding: 10px 4px;
+          position:static;
+        }
+        .header nav {
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
+          text-align:right
+        }
+        .header nav a, .header nav button {
+          font-size: 14px;
+          text-align:right;
+        }
+      }
+     
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+  <!-- Header -->
+  <header class="header flex justify-between items-center py-4 px-8 bg-white shadow-md  w-full top-0 z-50">
+    <div class="text-2xl font-bold text-indigo-600">Student <span class="text-black">Innovation</span> Center</div>
+    <nav class="space-x-6 text-sm">
+      <a href="/" class="hover:text-indigo-600">Home</a>
+      <a href="/upcomingevent" class="hover:text-indigo-600">Upcoming Events</a>
+      <a href="/pastEvent" class="hover:text-indigo-600">Past Events</a>
+      <a href="/profile" class="hover:text-indigo-600">Profile</a>
+      <a href="/contact" class="hover:text-indigo-600">Contacts</a>
+      <a href="/admin" class="hover:text-indigo-600">Admin</a>
+      <% if(admi){ %>
+        <a href="/logout" class="px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700">Logout</a>
+      <% } else { %>
+      <a href="/login" class="px-4 py-2 text-purple-600 hover:underline">Login</a>
+      <a href="/signup" class="px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700">Signup</a>
+    <% } %>
+    </nav>
+  </header>
+  
+
+  <!-- Hero Section -->
+  <section class="bg-gray-100 py-16">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <h1 class="text-4xl font-extrabold text-indigo-600 mb-4">TechSplore- Inhand Electronic Workshop</h1>
+      <p class="text-lg text-gray-600">
+        Unleash Innovation, Build the Future!
+      </p>
+    </div>
+  </section>
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <!-- Left Content -->
+      <div class="space-y-6">
+        <h2 class="text-4xl font-extrabold text-gray-800">About the Event</h2>
+        <p class="text-lg text-gray-600 leading-relaxed">
+            Techsplore: In-Hand Electronics Workshop is an immersive experience designed to empower students with practical knowledge of <span class="font-semibold text-indigo-600">electronic components</span> and their applications. This workshop offers hands-on training to help participants design and build exciting projects, fostering innovation and creativity. In a special initiative to broaden its reach, we are thrilled to invite students from Kendriya Vidyalaya to join this enriching journey.
+        </p>
+        <p class="text-lg text-gray-600 leading-relaxed">
+            TechSplore - Inhand Electronic Workshop is your gateway to<span class="font-semibold text-indigo-600">hands-on innovation</span> and cutting-edge technology. Dive into the world of electronics and unleash your creativity by building and exploring real-world projects!
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
+          <!-- Highlights Cards -->
+          <div class="bg-white shadow-lg rounded-lg p-4 text-center">
+            <h3 class="text-2xl font-bold text-indigo-600">30+ </h3>
+            <p class="text-gray-600 text-sm">Participation</p>
+          </div>
+          <div class="bg-white shadow-lg rounded-lg p-4 text-center">
+            <h3 class="text-2xl font-bold text-indigo-600">8+</h3>
+            <p class="text-gray-600 text-sm">Electronics Projects</p>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Right Image Section -->
+      <div class="space-y-6">
+        <div class="rounded-lg overflow-hidden shadow-lg">
+          <img src="https://i.postimg.cc/9MZK770q/Whats-App-Image-2024-12-11-at-13-55-42-6e7f2bfe.jpg" alt="Event Highlights" class="w-full h-auto">
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <!-- Supporting Images -->
+          <img src="https://i.postimg.cc/W4DQsKP8/Whats-App-Image-2024-12-11-at-13-55-43-135b1614.jpg" alt="Event Session" class="rounded-lg shadow-md">
+          <img src="https://i.postimg.cc/d3RbzyKK/Whats-App-Image-2024-12-11-at-13-55-45-bdbc5af5.jpg" alt="Workshop Moment" class="rounded-lg shadow-md">
+        </div>
+      </div>
+    </div>
+  
+    <!-- Feedback Section -->
+    <div class="mt-16 bg-indigo-100 py-8 px-6 rounded-lg shadow-md">
+      <h3 class="text-2xl font-bold text-center text-gray-800 mb-4">What Participants Say</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Feedback Card 1 -->
+        <div class="bg-white rounded-lg shadow-lg p-4">
+          <p class="text-gray-600">
+            "An incredible workshop that gave us practical knowledge in electronics, empowering us to explore and build our own projects. Truly an event that nurtured innovation!"
+          </p>
+          <h4 class="text-sm font-bold text-indigo-600 mt-4">— Rohit Raj, Student, Kendra Vidhyalaya</h4>
+        </div>
+        <!-- Feedback Card 2 -->
+        <div class="bg-white rounded-lg shadow-lg p-4">
+          <p class="text-gray-600">
+            "The workshop was an excellent opportunity to learn the intricacies of electronics while working on real-time projects. TechSplore ignited a passion for tech innovation among all participants."
+          </p>
+          <h4 class="text-sm font-bold text-indigo-600 mt-4">— Apoorva Pandit, Student</h4>
+        </div>
+        <!-- Feedback Card 3 -->
+        <div class="bg-white rounded-lg shadow-lg p-4">
+          <p class="text-gray-600">
+            "A fantastic workshop that provided both a deep dive into electronics and the chance to build something from scratch. TechSplore truly sparked creativity and boosted our technical skills."
+          </p>
+          <h4 class="text-sm font-bold text-indigo-600 mt-4">— Shristika Kumari, Student</h4>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+  <!-- Gallery Section -->
+  <section class="py-16 bg-gray-100">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">Event Highlights</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <img src="https://i.postimg.cc/Xvp0pq9w/Whats-App-Image-2024-12-11-at-13-55-44-a5044aa4.jpg" alt="Gallery Image 5" class="rounded-lg shadow-sm transition hover:scale-105">
+        <img src="https://i.postimg.cc/hPS6XhBf/tp.jpg" alt="Gallery Image 1" class="rounded-lg shadow-sm transition hover:scale-105">
+        <img src="https://i.postimg.cc/Y9FKzPn0/Whats-App-Image-2024-12-11-at-13-55-44-d7be24ba.jpg" alt="Gallery Image 2" class="rounded-lg shadow-sm transition hover:scale-105">
+        <img src="https://i.postimg.cc/QMRvCb83/Whats-App-Image-2024-12-11-at-13-55-43-8f0a9bf4.jpg" alt="Gallery Image 3" class="rounded-lg shadow-sm transition hover:scale-105">
+        <img src="https://i.postimg.cc/8zcYb3sG/Whats-App-Image-2024-12-11-at-13-55-42-4f92b1f7.jpg" alt="Gallery Image 4" class="rounded-lg shadow-sm transition hover:scale-105">
+        
+        <img src="https://i.postimg.cc/mggv5kX0/Whats-App-Image-2024-12-11-at-13-55-43-3191cf9a.jpg" alt="Gallery Image 6" class="rounded-lg shadow-sm transition hover:scale-105">
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Footer -->
+  <footer class="bg-indigo-900 text-white py-12">
+    <div class="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
+      <!-- About Us -->
+      <div>
+        <h2 class="font-bold text-lg">Student Innovation Center</h2>
+        <p class="mt-4 text-gray-400">
+          Your ultimate platform to host, organize, and explore incredible events.
+        </p>
+      </div>
+      <!-- Quick Links -->
+      <div>
+        <h2 class="font-bold text-lg">Quick Links</h2>
+        <ul class="mt-4 space-y-2">
+          <li><a href="#" class="hover:underline">Home</a></li>
+          <li><a href="#upcoming" class="hover:underline">Upcoming Events</a></li>
+          <li><a href="#past" class="hover:underline">Past Events</a></li>
+          <li><a href="#contacts" class="hover:underline">Contacts</a></li>
+        </ul>
+      </div>
+      <!-- Support -->
+      <div>
+        <h2 class="font-bold text-lg">Support</h2>
+        <ul class="mt-4 space-y-2">
+          <li><a href="#" class="hover:underline">Help Center</a></li>
+          <li><a href="#" class="hover:underline">FAQs</a></li>
+          <li><a href="#" class="hover:underline">Terms & Conditions</a></li>
+          <li><a href="#" class="hover:underline">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <!-- Contact Us -->
+      <div>
+        <h2 class="font-bold text-lg">Contact Us</h2>
+        <p class="mt-4 text-gray-400">
+          Email: <a href="mailto:info@eventhive.com" class="underline">info@eventhive.com</a>
+        </p>
+        <p class="mt-2 text-gray-400">
+          Phone: +123 456 7890
+        </p>
+        <div class="mt-4 flex space-x-4" style="width:5rem;">
+          <a href="#" class="hover:opacity-75">
+            <img src="src/facebook.png" alt="Facebook">
+          </a>
+          <a href="#" class="hover:opacity-75">
+            <img src="src/instagram.png" alt="Twitter">
+          </a>
+          <a href="#" class="hover:opacity-75">
+            <img src="src/linkedin.png" alt="LinkedIn">
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="mt-8 text-center text-sm text-gray-400">
+      © 2024 Student Innovation Center. All rights reserved.
+    </div>
+  </footer>
+</body>
+</html>
