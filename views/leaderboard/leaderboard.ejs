@@ -33,7 +33,7 @@
 <header class="header flex justify-between items-center py-4 px-8 bg-white shadow-md  w-full top-0 z-50">
     <div class="text-2xl font-bold text-indigo-600">Student <span class="text-black">Innovation</span> Center</div>
     <nav class="space-x-6 text-sm">
-      <a href="#" class="hover:text-indigo-600">Home</a>
+      <a href="/" class="hover:text-indigo-600">Home</a>
       <a href="/upcomingevent" class="hover:text-indigo-600">Upcoming Events</a>
       <a href="/pastEvent" class="hover:text-indigo-600">Past Events</a>
       <a href="/profile" class="hover:text-indigo-600">Profile</a>
@@ -51,12 +51,14 @@
   <!-- Leaderboard -->
   <main class="container mx-auto py-8 px-4">
     <div class="text-center mb-8">
-      <h2 class="text-4xl font-bold text-purple-800">Leaderboard</h2>
+      <h1 class="text-5xl font-extrabold text-purple-800">Leader<span class="text-black">board</span></h1>
+      <h3 class="text-4xl font-bold text-purple-800 p-2">ECE-ian of <span class="text-black">The Week</span></h3>
       <p class="text-indigo-600 mt-2">Celebrating our top performers with style ✨</p>
     </div>
     <div class="overflow-x-auto shadow-md rounded-lg">
+      
       <table class="min-w-full bg-white rounded-lg">
-        <thead class="bg-purple-800 text-white">
+        <thead class="bg-indigo-600 text-white">
           <tr>
             <th class="py-3 px-6 text-left">Place</th>
             <th class="py-3 px-6 text-left">Name</th>
@@ -70,12 +72,22 @@
             <% winnersList.map((item, index)=>{ %>
                  <!-- Rows -->
           <tr class="hover:bg-purple-100 transition">
-            <td class="py-4 px-6">🥇 <%=index+1 %></td>
+            <td class="py-4 px-6">
+              <% if(index== 0){ %>
+                🎖️
+            <%  } else if (index== 1){ %>
+              🥈
+           <% } else if (index===2){ %>
+            🥉
+          <% } else { %>
+            <%=index+1 %>
+        <%  } %>
+              </td>
             <td class="py-4 px-6 font-bold"><%=item.name %></td>
             <td class="py-4 px-6"><%=item.sem %></td>
             <td class="py-4 px-6"><%=item.department %></td>
             <td class="py-4 px-6"><%=item.winCount %></td>
-            <td class="py-4 px-6 italic">"The Champion"</td>
+            <td class="py-4 px-6 italic text-purple-600"><%=item.quote %></td>
           </tr>
           
           <%  }) %>
