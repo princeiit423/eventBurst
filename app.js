@@ -489,8 +489,8 @@ app.get("/admin/winner",isLoggedIn,isAdmin,(req,res,next)=>{
 })
 app.post("/admin/winner",isLoggedIn,isAdmin, async(req,res,next)=>{
   try {
-    const{name,department,imageUrl,semester,year}= req.body;
-  const newWinner = await new winner({name,department,imageUrl,semester,year});
+    const{name,department,imageUrl,semester,year,roll}= req.body;
+  const newWinner = await new winner({name,department,imageUrl,semester,year,roll});
   await newWinner.save();
   res.redirect("/admin");
   } catch (err) {
@@ -577,6 +577,31 @@ app.get("/contact",(req,res,next)=>{
   }
 })
 
+
+app.get("/leaderboard",async(req,res,next)=>{
+    try {
+      const winnersList = await winner.aggregate([
+        {
+          $group: {
+            _id: "$roll", // Group by the name field
+            winCount: { $sum: 1 }, // Count the number of wins
+            department: { $first: "$department" }, // Include department for context
+            imageUrl: { $first: "$imageUrl" }, // Include image URL for context
+            name: { $first: "$name" }, // Include name for context
+            sem: { $first: "$semester"} // include semester
+          },
+        },
+        {
+          $sort: { winCount: -1 }, // Sort by win count in descending order
+        },
+      ]);
+      const admi = req.user||null
+      res.render("leaderboard/leaderboard.ejs",{winnersList, admi});
+    } catch (err) {
+      next(err);
+    }
+   
+})
 
 app.use((err, req, res, next) => {
   res.render("error/err.ejs",{err});

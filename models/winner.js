@@ -7,6 +7,7 @@ const winnerSchema= new mongoose.Schema({
     imageUrl:String,
     semester:Number,
     year:Number,
+    roll:Number,
     date:{
         type:Date,
         default:Date.now,
