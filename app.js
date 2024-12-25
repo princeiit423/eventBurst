@@ -21,6 +21,7 @@ const MongoStore = require("connect-mongo");
 const sendmail = require("./sendmail_middleware.js");
 const isAdmin = require("./isAdmin_middleware.js");
 const methodOverride = require("method-override");
+const flash = require("connect-flash");
 
 const multer = require("multer");
 const { storage } = require("./cloudConfig.js");
@@ -71,6 +72,7 @@ const sessionOptions = {
 };
 
 app.use(session(sessionOptions));
+app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new localStrategy(User.authenticate()));
@@ -80,6 +82,9 @@ passport.deserializeUser(User.deserializeUser());
 
 app.use((req, res, next) => {
   res.locals.currUser = req.user;
+  res.locals.success = req.flash("success");
+  res.locals.logout= req.flash("logout");
+  res.locals.signup= req.flash("signup");
   next();
 });
 
@@ -88,7 +93,7 @@ app.get("/", async (req, res, next) => {
     const admi = req.user || null;
 
     const events = await upcomingevent.find().sort({ _id: -1 }).limit(6);
-    const winners = await winner.find().sort({ _id: -1 }).limit(1);
+    const winners = await winner.find().sort({ _id: -1 }).limit(1);   
     res.render("home/home1.ejs", { admi, winners, events });
   } catch (err) {
     next(err);
@@ -106,13 +111,6 @@ app.post("/signup", async (req, res, next) => {
   try {
     let { username, email, password, fullname, branch, roll, semester, year } =
       req.body;
-
-    // Check if a user already exists with the same username
-    // const existingUser = await User.findOne({ username });
-    // if (existingUser) {
-    //   return res.status(400).send('A user with the given username already exists.');
-    // }
-
     const newUser = new User({
       username,
       email,
@@ -126,10 +124,21 @@ app.post("/signup", async (req, res, next) => {
     const registerUser = await User.register(newUser, password);
     await registerUser.save();
 
-    const winners = await winner.find().sort({ _id: -1 }).limit(1);
-    const events = await upcomingevent.find().sort({ _id: -1 }).limit(6);
-    const admi = req.user || null;
-    res.render("home/home1.ejs", { winners, admi, events });
+    //functionality to directly login after signup
+    req.login(registerUser, async (err) => {
+      if (err) {
+        return next(err);
+      }
+      try {
+        const winners = await winner.find().sort({ _id: -1 }).limit(1);
+        const events = await upcomingevent.find().sort({ _id: -1 }).limit(6);
+        const admi = req.user || null;
+        req.flash("signup", "Signup Successfully");
+        res.render("home/home1.ejs", { winners, admi, events , signup: req.flash("signup")});
+      } catch (err) {
+        next(err);
+      }
+    });
   } catch (err) {
     // Pass any other errors to the error handler
     next(err);
@@ -155,12 +164,13 @@ app.get("/login", (req, res) => {
 app.post(
   "/login",
   passport.authenticate("local", { failureRedirect: "/login" }),
-  async (req, res) => {
+  async (req, res,next) => {
     try {
       const winners = await winner.find().sort({ _id: -1 }).limit(1);
       const events = await upcomingevent.find().sort({ _id: -1 }).limit(6);
       const admi = req.user || null;
-      res.render("home/home1.ejs", { winners, admi, events });
+      req.flash("success", "Login Successfully");
+      res.render("home/home1.ejs", { winners, admi, events, success: req.flash("success") });
     } catch (err) {
       next(err);
     }
@@ -175,7 +185,8 @@ app.get("/logout", (req, res, next) => {
       const winners = await winner.find().sort({ _id: -1 }).limit(1);
       const events = await upcomingevent.find().sort({ _id: -1 }).limit(6);
       const admi = req.user || null;
-      return res.render("home/home1.ejs", { winners, admi, events });
+      req.flash("logout", "Logout Successfully");
+      return res.render("home/home1.ejs", { winners, admi, events , logout: req.flash("logout")});
     }
   });
 });

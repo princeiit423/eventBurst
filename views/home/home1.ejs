@@ -153,6 +153,25 @@
 class="relative bg-cover bg-center h-screen"
 style="background-image: url('https://i.postimg.cc/pVjhtyYy/Landing-Page-1-2.jpg');"
 >
+<% if (success && success.length > 0) { %>
+  <div class="flash-message fixed top-13 left-1/2 transform -translate-x-1/2 bg-green-500 text-white text-center font-bold py-2 px-4 rounded shadow-lg transition-opacity duration-300 opacity-100">
+    <h1><%= success %></h1>
+  </div>
+<% } %>
+
+<% if (signup && signup.length > 0) { %>
+  <div class="flash-message fixed top-13 left-1/2 transform -translate-x-1/2 bg-green-500 text-white text-center font-bold py-2 px-4 rounded shadow-lg transition-opacity duration-300 opacity-100">
+    <h1><%= signup %></h1>
+  </div>
+<% } %>
+<% if (logout && logout.length > 0) { %>
+  <div class="flash-message fixed top-13 left-1/2 transform -translate-x-1/2 bg-red-500 text-white text-center font-bold py-2 px-4 rounded shadow-lg transition-opacity duration-300 opacity-100">
+    <h1><%= logout %></h1>
+  </div>
+<% } %>
+
+
+
 <div class="absolute inset-0"></div>
 <div
   class="relative z-10 text-center flex flex-col items-center justify-center h-full w-full lg:w-1/2 text-white px-6 sm:px-10 lg:px-20"
@@ -882,5 +901,24 @@ style="background-image: url('https://i.postimg.cc/pVjhtyYy/Landing-Page-1-2.jpg
     © 2024 Student Innovation Center. All rights reserved.
   </div>
 </footer>
+
+<script>
+  // Wait for the DOM to load
+  document.addEventListener("DOMContentLoaded", () => {
+    const flashMessage = document.querySelector(".flash-message");
+
+    if (flashMessage) {
+      // Set a timer to hide the flash message after 3 seconds (3000ms)
+      setTimeout(() => {
+        flashMessage.classList.add("opacity-0");
+        
+        // Remove the element from the DOM after the fade-out transition
+        setTimeout(() => {
+          flashMessage.remove();
+        }, 300); // Duration matches the Tailwind transition
+      }, 3000);
+    }
+  });
+</script>
 </body>
 </html>
