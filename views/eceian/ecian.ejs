@@ -114,6 +114,11 @@
       <blockquote class="text-lg font-medium italic text-indigo-500 border-l-4 border-indigo-500 pl-4">
         "Your hard work and perseverance inspire us all. Keep shining and reaching new heights!"
       </blockquote>
+    <% if(admi.username == "iei786"){ %>
+      <form method="post" action="/admin/winner/<%=e._id %>?_method=DELETE" ><button class="bg-red-600 text-white p-2 rounded-xl mt-5">Delete</button></form>
+    
+    <% } %>  
+      
     </div>
 
   </div>

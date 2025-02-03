@@ -584,6 +584,16 @@ app.post("/admin/winner", isLoggedIn, isAdmin, async (req, res, next) => {
   }
 });
 
+app.delete("/admin/winner/:id", isLoggedIn, isAdmin, async (req, res, next) => {
+  try {
+    const ID= req.params.id;
+    await winner.findByIdAndDelete(ID);
+    res.redirect("/winner");
+  } catch (err) {
+    next(err);
+  }
+});
+
 app.get("/admin/attendance", isLoggedIn, isAdmin, (req, res, next) => {
   try {
     const admi = req.user || null;
@@ -621,7 +631,7 @@ app.get("/records", isLoggedIn, isAdmin, async (req, res, next) => {
     next(err);
   }
 });
-app.get("/winner", async (req, res, next) => {
+app.get("/winner",isLoggedIn, async (req, res, next) => {
   try {
     const admi = req.user || null;
     const winners = await winner.find().sort({ _id: -1 });
