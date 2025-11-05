@@ -75,7 +75,8 @@
          <!-- <li><strong>Time:</strong> 10:00 AM - 5:00 PM</li>-->
           <li><strong>Location:</strong> <%=singleEvent.location%></li>
           <li><strong>Organised By:</strong> <%=singleEvent.club%></li>
-          <li><strong>Registration Fee:</strong> <%=singleEvent.entryFee%></li>
+          <li><strong>Registration Fee:</strong> &#8377;<%= singleEvent.entryFee %></li>
+
         </ul>
         <div class="bg-indigo-50 p-6 rounded-lg mt-6">
           <h3 class="text-2xl font-semibold text-indigo-700 mb-4">Why You Should Join?</h3>
@@ -88,16 +89,29 @@
           </ul>
         </div>
       
-        <% if(fee === "free" || fee === "Free" || fee === "na" || fee === "NA" || fee === "Na" || fee === "N/A" || fee === "FREE") { %>
-          <a href="/upcomingevent/<%=singleEvent._id %>/register-free"><button class="mt-3 px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition duration-300">Register Now</button></a>
-          <% } else{%>
-        <a href="/upcomingevent/<%=singleEvent._id %>/register"><button class="mt-3 px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition duration-300">Register Now</button></a>
-       <% } %>
+        <% 
+  const eventDate = new Date(singleEvent.dateOfEvent);
+  const today = new Date();
+%>
 
-        <% if(username==="iei786" ){ %>
-        <a href="/upcomingevent/<%=singleEvent._id %>/participation"><button href="#" class="mt-3 px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition duration-300">See Participation</button></a>
-        <form method="post" action="/upcomingevent/<%=singleEvent._id %>?_method=DELETE"><button href="#" class="mt-3 px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition duration-300">Delete Event</button></form>
-          <%}%>
+<% if (eventDate > today) { %>
+  <% if (fee === "free" || fee === "Free" || fee === "na" || fee === "NA" || fee === "Na" || fee === "N/A" || fee === "FREE") { %>
+    <a href="/upcomingevent/<%= singleEvent._id %>/register-free">
+      <button class="mt-3 px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition duration-300">
+        Register Now
+      </button>
+    </a>
+  <% } else { %>
+    <a href="/upcomingevent/<%= singleEvent._id %>/register">
+      <button class="mt-3 px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition duration-300">
+        Register Now
+      </button>
+    </a>
+  <% } %>
+<% } else { %>
+  <p class="mt-3 text-red-600 font-semibold italic">Event Closed</p>
+<% } %>
+
       </div>
 
       <!-- Poster Image Section -->
