@@ -92,7 +92,7 @@ app.get("/", async (req, res, next) => {
   try {
     const admi = req.user || null;
 
-    const events = await upcomingevent.find().sort({ _id: -1 }).limit(6);
+    const events = await upcomingevent.find().sort({ dateOfEvent: -1 }).limit(6);
     const winners = await winner.find().sort({ _id: -1 }).limit(1);   
     res.render("home/home1.ejs", { admi, winners, events });
   } catch (err) {
@@ -329,7 +329,7 @@ app.post("/addevent", isAdmin, async (req, res, next) => {
 
 app.get("/upcomingevent", isLoggedIn, async (req, res, next) => {
   try {
-    const allupcomingEvent = await upcomingevent.find().sort({ _id: -1 });
+    const allupcomingEvent = await upcomingevent.find().sort({ dateOfEvent: -1 });
     const admi = req.user || null;
     res.render("upcomingevent/upcomingevent.ejs", { allupcomingEvent, admi });
   } catch (err) {
